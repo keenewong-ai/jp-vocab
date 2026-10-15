@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1115" />
+  <title>Keene 日語生字 · Memo 卡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">日</div>
+        <div>
+          <h1>Keene 日語生字</h1>
+          <p>生字表 · Memo 卡 · 日文朗讀</p>
+        </div>
+      </div>
+      <div class="stats-pill" title="已標記為識嘅生字">
+        已識 <strong id="known-count">0</strong> / <span id="total-count">—</span>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button type="button" class="tab active" data-panel="panel-list" role="tab" aria-selected="true">生字表</button>
+      <button type="button" class="tab" data-panel="panel-flash" role="tab" aria-selected="false">Memo 卡</button>
+    </nav>
+
+    <!-- List panel -->
+    <section id="panel-list" class="panel active" role="tabpanel">
+      <div class="search-bar">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input id="search" type="search" placeholder="搜尋日文或中文…" autocomplete="off" enterkeyhint="search" />
+      </div>
+      <div class="search-meta">
+        <span id="search-count">載入中…</span>
+      </div>
+      <ul id="word-list" class="word-list" aria-label="生字列表"></ul>
+
+      <div id="detail" class="detail" aria-live="polite">
+        <div class="detail-top">
+          <div>
+            <div id="detail-jp" class="jp"></div>
+            <div id="detail-zh" class="zh"></div>
+          </div>
+          <button type="button" id="detail-speak" class="icon-btn" title="讀出日文" aria-label="讀出日文">🔊</button>
+        </div>
+        <div class="detail-actions">
+          <button type="button" id="detail-known" class="btn btn-success">標記為已識</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flashcard panel -->
+    <section id="panel-flash" class="panel" role="tabpanel">
+      <div class="flash-toolbar">
+        <div class="progress-text" id="flash-progress"><strong>1</strong> / —</div>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap">
+          <button type="button" id="btn-shuffle" class="btn btn-ghost">🔀 洗牌</button>
+          <button type="button" id="btn-restart" class="btn btn-ghost">↺ 重頭</button>
+        </div>
+      </div>
+      <div class="progress-bar" aria-hidden="true"><div id="progress-fill" class="progress-fill"></div></div>
+
+      <div class="card-stage">
+        <div id="flash-card" class="flash-card" role="button" tabindex="0" aria-label="點擊翻轉閃卡">
+          <button type="button" id="card-speak" class="icon-btn card-speak" title="讀出日文" aria-label="讀出日文">🔊</button>
+          <div class="card-face front">
+            <span class="card-label">日文</span>
+            <div id="card-jp" class="card-jp">…</div>
+            <span class="card-hint">點卡片翻轉 · 空白鍵亦可</span>
+          </div>
+          <div class="card-face back">
+            <span class="card-label">意思</span>
+            <div id="card-zh" class="card-zh">…</div>
+            <span class="card-hint">再點一次翻返去</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash-controls">
+        <button type="button" id="btn-known" class="btn btn-success">✓ 知道了</button>
+        <button type="button" id="btn-again" class="btn btn-warn">↻ 再睇</button>
+      </div>
+      <div class="nav-controls">
+        <button type="button" id="btn-prev" class="btn btn-ghost">← 上一張</button>
+        <button type="button" class="btn btn-ghost" id="btn-flip-hint" title="點卡片或空白鍵">翻轉</button>
+        <button type="button" id="btn-next" class="btn btn-ghost">下一張 →</button>
+      </div>
+
+      <p id="tts-note" class="tts-note" role="status"></p>
+    </section>
+
+    <p class="footer-note">資料來自 vocab.json · 進度儲存於本機瀏覽器 · 朗讀用 Web Speech API（ja-JP）</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
