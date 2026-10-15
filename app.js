@@ -49,6 +49,8 @@
   let state = loadState();
   let zhVoice = null;
   let zhVoiceLabel = "";
+  let zhHasCantonese = false;
+  let zhHasAnyChinese = false;
   let autoplay = false;
   let autoplayTimers = [];
   let autoplayToken = 0;
@@ -150,23 +152,63 @@
     return preferred;
   }
 
+  function isCantoneseVoice(v) {
+    if (!v) return false;
+    const lang = (v.lang || "").toLowerCase().replace(/_/g, "-");
+    const name = (v.name || "").toLowerCase();
+    return (
+      lang === "zh-hk" ||
+      lang.startsWith("zh-hk") ||
+      lang === "yue" ||
+      lang.startsWith("yue-") ||
+      lang === "zh-yue" ||
+      lang.includes("yue") ||
+      name.includes("yue") ||
+      name.includes("cantonese") ||
+      name.includes("粵語") ||
+      name.includes("粤语") ||
+      name.includes("香港") ||
+      name.includes("hong kong")
+    );
+  }
+
+  function isMandarinVoice(v) {
+    if (!v) return false;
+    if (isCantoneseVoice(v)) return false;
+    const lang = (v.lang || "").toLowerCase().replace(/_/g, "-");
+    const name = (v.name || "").toLowerCase();
+    return (
+      lang.startsWith("zh-cn") ||
+      lang === "zh" ||
+      lang.startsWith("cmn") ||
+      name.includes("mandarin") ||
+      name.includes("putonghua") ||
+      name.includes("普通话") ||
+      name.includes("普通話") ||
+      name.includes("国语") ||
+      name.includes("國語")
+    );
+  }
+
   function pickChineseVoice() {
     if (!window.speechSynthesis) return null;
     const voices = speechSynthesis.getVoices();
+    // Prefer Cantonese / Hong Kong only — never lock onto Mandarin (zh-CN).
     const preferred =
-      voices.find((v) => v.lang === "zh-HK") ||
-      voices.find((v) => /^yue\b/i.test(v.lang) || /yue/i.test(v.name)) ||
-      voices.find((v) => v.lang === "zh-TW") ||
-      voices.find((v) => v.lang.toLowerCase() === "zh-hant") ||
-      voices.find((v) => v.lang.startsWith("zh-CN")) ||
-      voices.find((v) => v.lang.startsWith("zh")) ||
+      voices.find((v) => (v.lang || "").replace(/_/g, "-") === "zh-HK") ||
+      voices.find((v) => (v.lang || "").toLowerCase().replace(/_/g, "-") === "yue-hk") ||
+      voices.find((v) => /^yue\b/i.test((v.lang || "").replace(/_/g, "-"))) ||
+      voices.find((v) => isCantoneseVoice(v)) ||
       null;
     zhVoice = preferred;
-    if (preferred) {
-      zhVoiceLabel = preferred.lang || preferred.name || "";
-    } else {
-      zhVoiceLabel = "";
-    }
+    zhVoiceLabel = preferred ? preferred.lang || preferred.name || "" : "";
+    zhHasCantonese = !!preferred;
+    zhHasAnyChinese = voices.some(
+      (v) =>
+        isCantoneseVoice(v) ||
+        isMandarinVoice(v) ||
+        /^(zh|yue|cmn)\b/i.test((v.lang || "").replace(/_/g, "-"))
+    );
     return preferred;
   }
 
@@ -206,13 +248,15 @@
       return null;
     }
     if (cancel) speechSynthesis.cancel();
+    // Refresh in case voices arrived late (common on mobile).
+    pickChineseVoice();
     const u = new SpeechSynthesisUtterance(text);
-    if (!zhVoice) pickChineseVoice();
-    // Prefer Cantonese / HK; fall back to whatever Chinese voice we found
-    if (zhVoice) {
+    // Always request Cantonese / Hong Kong — do not set zh-CN.
+    u.lang = "zh-HK";
+    // Only assign an explicit voice when it is Cantonese; never Mandarin.
+    if (zhVoice && isCantoneseVoice(zhVoice)) {
       u.voice = zhVoice;
-      u.lang = zhVoice.lang || "zh-HK";
-    } else {
+      // Keep lang as zh-HK even if the voice reports a variant tag.
       u.lang = "zh-HK";
     }
     u.rate = 0.95;
@@ -465,24 +509,13 @@
     if (!window.speechSynthesis) {
       voiceNote = " · 唔支援語音";
       isFallback = true;
-    } else if (!zhVoice) {
-      voiceNote = " · 搵唔到中文語音，會用系統預設";
-      isFallback = true;
+    } else if (zhHasCantonese && zhVoice) {
+      voiceNote = ` · 粵語 ${zhVoice.lang || zhVoice.name || "zh-HK"}`;
     } else {
-      const lang = (zhVoice.lang || "").toLowerCase();
-      const name = (zhVoice.name || "").toLowerCase();
-      const isYue =
-        lang === "zh-hk" ||
-        lang.startsWith("yue") ||
-        name.includes("yue") ||
-        name.includes("cantonese") ||
-        name.includes("香港");
-      if (!isYue) {
-        voiceNote = ` · 中文語音：${zhVoice.lang || zhVoice.name}（非粵語，已盡量用接近嘅）`;
-        isFallback = true;
-      } else {
-        voiceNote = ` · 粵語 ${zhVoice.lang || ""}`;
-      }
+      // No Cantonese voice listed: still speak with lang=zh-HK (OS may map it).
+      voiceNote =
+        " · 未偵測到粵語／香港語音，已用 zh-HK 請系統讀；若仍係普通話，請喺系統設定加入「粵語／香港」語音";
+      isFallback = true;
     }
     els.autoplayStatus.classList.toggle("fallback", isFallback);
     els.autoplayStatusText.textContent = `自動播放中（${filterLabel} · 隨機）${voiceNote}`;
@@ -569,7 +602,11 @@
       els.ttsNote.textContent =
         "呢個瀏覽器唔支援語音朗讀（Web Speech API）。請用 Chrome / Edge / Safari 試吓。";
     }
-    refreshVoices();
+    // Force voice list refresh before starting (mobile often loads voices late).
+    if (window.speechSynthesis) {
+      speechSynthesis.getVoices();
+      refreshVoices();
+    }
     autoplay = true;
     autoplayToken += 1;
     const token = autoplayToken;
