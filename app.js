@@ -917,10 +917,83 @@
     if (w) speak(w.jp);
   });
 
+  // Memo card gestures:
+  // - Phone / touch: tap = speak Japanese (no flip); swipe L/R = flip
+  // - Desktop mouse: click = flip (🔊 button still speaks)
+  const SWIPE_THRESHOLD_PX = 40;
+  const TAP_MAX_MOVE_PX = 14;
+  const TAP_MAX_MS = 550;
+  let touchTrack = null; // { x, y, t }
+  let suppressCardClick = false;
+
   els.flashCard.addEventListener("click", (e) => {
     if (e.target.closest(".card-speak")) return;
+    if (suppressCardClick) {
+      suppressCardClick = false;
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
     flipCard();
   });
+
+  els.flashCard.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.target.closest(".card-speak")) {
+        touchTrack = null;
+        return;
+      }
+      if (e.touches.length !== 1) {
+        touchTrack = null;
+        return;
+      }
+      const t = e.touches[0];
+      touchTrack = { x: t.clientX, y: t.clientY, t: Date.now() };
+    },
+    { passive: true }
+  );
+
+  els.flashCard.addEventListener(
+    "touchcancel",
+    () => {
+      touchTrack = null;
+    },
+    { passive: true }
+  );
+
+  els.flashCard.addEventListener(
+    "touchend",
+    (e) => {
+      if (!touchTrack) return;
+      const start = touchTrack;
+      touchTrack = null;
+      if (e.target.closest(".card-speak")) return;
+      if (!deck.length) return;
+      const t = e.changedTouches[0];
+      if (!t) return;
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+      const absX = Math.abs(dx);
+      const absY = Math.abs(dy);
+      const dt = Date.now() - start.t;
+
+      // Horizontal swipe → flip (left or right)
+      if (absX >= SWIPE_THRESHOLD_PX && absX > absY * 1.15) {
+        suppressCardClick = true;
+        flipCard();
+        return;
+      }
+
+      // Tap → speak Japanese only (do not flip)
+      if (absX <= TAP_MAX_MOVE_PX && absY <= TAP_MAX_MOVE_PX && dt <= TAP_MAX_MS) {
+        suppressCardClick = true;
+        const w = currentCard();
+        if (w) speakJa(w.jp, { cancel: true });
+      }
+    },
+    { passive: true }
+  );
 
   els.cardSpeak.addEventListener("click", (e) => {
     e.stopPropagation();

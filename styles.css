@@ -483,6 +483,9 @@ body {
   transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
   cursor: pointer;
   border-radius: 20px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .flash-card.flipped {
@@ -541,6 +544,19 @@ body {
   font-size: 0.8rem;
   color: var(--text-dim);
   margin-top: 0.5rem;
+}
+
+.card-hint-touch {
+  display: none;
+}
+
+@media (pointer: coarse), (hover: none) {
+  .card-hint-desktop {
+    display: none;
+  }
+  .card-hint-touch {
+    display: block;
+  }
 }
 
 .card-speak {
