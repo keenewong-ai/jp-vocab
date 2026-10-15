@@ -18,15 +18,20 @@
     flashProgress: document.getElementById("flash-progress"),
     progressFill: document.getElementById("progress-fill"),
     flashCard: document.getElementById("flash-card"),
+    flashMain: document.getElementById("flash-main"),
+    flashEmpty: document.getElementById("flash-empty"),
     cardJp: document.getElementById("card-jp"),
     cardZh: document.getElementById("card-zh"),
     cardSpeak: document.getElementById("card-speak"),
+    btnFocus: document.getElementById("btn-focus"),
     btnKnown: document.getElementById("btn-known"),
     btnAgain: document.getElementById("btn-again"),
     btnPrev: document.getElementById("btn-prev"),
     btnNext: document.getElementById("btn-next"),
     btnShuffle: document.getElementById("btn-shuffle"),
     btnRestart: document.getElementById("btn-restart"),
+    btnShowAll: document.getElementById("btn-show-all"),
+    filterChips: document.querySelectorAll(".filter-chip"),
     ttsNote: document.getElementById("tts-note"),
   };
 
@@ -37,20 +42,22 @@
   let flipped = false;
   let selectedId = null;
   let jpVoice = null;
+  let deckFilter = "all"; // "all" | "focus"
   let state = loadState();
 
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return { knownIds: [], deckOrder: null, deckIndex: 0 };
+      if (!raw) return { knownIds: [], focusIds: [], deckOrder: null, deckIndex: 0 };
       const parsed = JSON.parse(raw);
       return {
         knownIds: Array.isArray(parsed.knownIds) ? parsed.knownIds : [],
+        focusIds: Array.isArray(parsed.focusIds) ? parsed.focusIds : [],
         deckOrder: Array.isArray(parsed.deckOrder) ? parsed.deckOrder : null,
         deckIndex: typeof parsed.deckIndex === "number" ? parsed.deckIndex : 0,
       };
     } catch {
-      return { knownIds: [], deckOrder: null, deckIndex: 0 };
+      return { knownIds: [], focusIds: [], deckOrder: null, deckIndex: 0 };
     }
   }
 
@@ -59,6 +66,7 @@
       STORAGE_KEY,
       JSON.stringify({
         knownIds: state.knownIds,
+        focusIds: state.focusIds,
         deckOrder: state.deckOrder,
         deckIndex: deckIndex,
       })
@@ -67,6 +75,10 @@
 
   function isKnown(id) {
     return state.knownIds.includes(id);
+  }
+
+  function isFocused(id) {
+    return state.focusIds.includes(id);
   }
 
   function toggleKnown(id) {
@@ -89,8 +101,32 @@
     updateKnownStats();
   }
 
+  function toggleFocus(id) {
+    if (isFocused(id)) {
+      state.focusIds = state.focusIds.filter((x) => x !== id);
+    } else {
+      state.focusIds = [...state.focusIds, id];
+    }
+    saveState();
+    updateFocusBtn();
+    // If filtering to focus only and we just unfocused the last card, rebuild
+    if (deckFilter === "focus") {
+      const currentId = id;
+      rebuildDeckFromFilter({ preferId: isFocused(currentId) ? currentId : null });
+    }
+  }
+
   function updateKnownStats() {
     els.knownCount.textContent = String(state.knownIds.length);
+  }
+
+  function updateFocusBtn() {
+    const w = currentCard();
+    if (!w || !els.btnFocus) return;
+    const focused = isFocused(w.id);
+    els.btnFocus.textContent = focused ? "★ 已關注" : "☆ 重點關注";
+    els.btnFocus.classList.toggle("active", focused);
+    els.btnFocus.setAttribute("aria-pressed", focused ? "true" : "false");
   }
 
   function pickJapaneseVoice() {
@@ -189,53 +225,121 @@
     els.detailKnown.className = "btn " + (known ? "btn-ghost" : "btn-success");
   }
 
-  function buildDeck(order) {
-    if (order && order.length === vocab.length) {
-      const byId = new Map(vocab.map((w) => [w.id, w]));
-      deck = order.map((id) => byId.get(id)).filter(Boolean);
-      if (deck.length !== vocab.length) deck = [...vocab];
-    } else {
-      deck = [...vocab];
+  function getFilteredPool() {
+    if (deckFilter === "focus") {
+      return vocab.filter((w) => isFocused(w.id));
     }
+    return [...vocab];
+  }
+
+  function rebuildDeckFromFilter({ preferId = null, shuffle = false } = {}) {
+    const pool = getFilteredPool();
+
+    if (pool.length === 0) {
+      deck = [];
+      deckIndex = 0;
+      flipped = false;
+      showEmptyState(true);
+      updateFlashProgressEmpty();
+      return;
+    }
+
+    showEmptyState(false);
+
+    let next;
+    if (shuffle) {
+      next = [...pool];
+      for (let i = next.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [next[i], next[j]] = [next[j], next[i]];
+      }
+    } else if (state.deckOrder && state.deckOrder.length) {
+      const byId = new Map(pool.map((w) => [w.id, w]));
+      const ordered = [];
+      for (const id of state.deckOrder) {
+        const w = byId.get(id);
+        if (w) {
+          ordered.push(w);
+          byId.delete(id);
+        }
+      }
+      // append any pool items not in saved order (e.g. newly focused)
+      for (const w of byId.values()) ordered.push(w);
+      next = ordered.length ? ordered : [...pool];
+    } else {
+      next = [...pool];
+    }
+
+    deck = next;
     state.deckOrder = deck.map((w) => w.id);
-    deckIndex = Math.min(Math.max(0, state.deckIndex || 0), deck.length - 1);
+
+    if (preferId != null) {
+      const idx = deck.findIndex((w) => w.id === preferId);
+      deckIndex = idx >= 0 ? idx : 0;
+    } else {
+      deckIndex = Math.min(Math.max(0, state.deckIndex || 0), deck.length - 1);
+    }
+
     flipped = false;
     renderCard();
     saveState();
+  }
+
+  function showEmptyState(empty) {
+    if (els.flashEmpty) els.flashEmpty.hidden = !empty;
+    if (els.flashMain) els.flashMain.hidden = empty;
+  }
+
+  function updateFlashProgressEmpty() {
+    const label = deckFilter === "focus" ? "重點關注" : "全部";
+    els.flashProgress.innerHTML = `<strong>0</strong> / 0 · ${label}`;
+    els.progressFill.style.width = "0%";
   }
 
   function shuffleDeck() {
-    deck = [...vocab];
-    for (let i = deck.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [deck[i], deck[j]] = [deck[j], deck[i]];
-    }
-    state.deckOrder = deck.map((w) => w.id);
-    deckIndex = 0;
-    flipped = false;
-    renderCard();
-    saveState();
+    rebuildDeckFromFilter({ shuffle: true });
   }
 
   function restartDeck() {
+    if (!deck.length) return;
     deckIndex = 0;
     flipped = false;
     renderCard();
     saveState();
   }
 
+  function setFilter(filter) {
+    if (filter !== "all" && filter !== "focus") return;
+    const currentId = currentCard()?.id ?? null;
+    deckFilter = filter;
+    els.filterChips.forEach((chip) => {
+      const on = chip.dataset.filter === filter;
+      chip.classList.toggle("active", on);
+      chip.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    rebuildDeckFromFilter({ preferId: currentId });
+  }
+
   function renderCard() {
-    if (!deck.length) return;
+    if (!deck.length) {
+      showEmptyState(true);
+      updateFlashProgressEmpty();
+      return;
+    }
+    showEmptyState(false);
     const w = deck[deckIndex];
     els.cardJp.textContent = w.jp;
     els.cardZh.textContent = w.zh;
     els.flashCard.classList.toggle("flipped", flipped);
-    els.flashProgress.innerHTML = `<strong>${deckIndex + 1}</strong> / ${deck.length}`;
+    const filterLabel = deckFilter === "focus" ? " · 重點" : "";
+    els.flashProgress.innerHTML = `<strong>${deckIndex + 1}</strong> / ${deck.length}${filterLabel}`;
     const pct = ((deckIndex + 1) / deck.length) * 100;
     els.progressFill.style.width = pct + "%";
+    updateFocusBtn();
   }
 
   function flipCard() {
+    if (!deck.length) return;
     flipped = !flipped;
     els.flashCard.classList.toggle("flipped", flipped);
   }
@@ -269,6 +373,10 @@
       els.panels.forEach((p) => p.classList.remove("active"));
       tab.classList.add("active");
       document.getElementById(tab.dataset.panel).classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      els.tabs.forEach((t) => {
+        if (t !== tab) t.setAttribute("aria-selected", "false");
+      });
     });
   });
 
@@ -313,6 +421,12 @@
     if (w) speak(w.jp);
   });
 
+  els.btnFocus.addEventListener("click", () => {
+    const w = currentCard();
+    if (!w) return;
+    toggleFocus(w.id);
+  });
+
   els.btnKnown.addEventListener("click", () => {
     const w = currentCard();
     if (!w) return;
@@ -336,6 +450,14 @@
   els.btnShuffle.addEventListener("click", shuffleDeck);
   els.btnRestart.addEventListener("click", restartDeck);
 
+  els.filterChips.forEach((chip) => {
+    chip.addEventListener("click", () => setFilter(chip.dataset.filter));
+  });
+
+  if (els.btnShowAll) {
+    els.btnShowAll.addEventListener("click", () => setFilter("all"));
+  }
+
   const flipHint = document.getElementById("btn-flip-hint");
   if (flipHint) {
     flipHint.disabled = false;
@@ -347,6 +469,7 @@
   document.addEventListener("keydown", (e) => {
     const flashActive = document.getElementById("panel-flash").classList.contains("active");
     if (!flashActive) return;
+    if (!deck.length) return;
     if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
       flipCard();
@@ -367,7 +490,6 @@
     } else {
       pickJapaneseVoice();
       speechSynthesis.onvoiceschanged = () => pickJapaneseVoice();
-      // Some browsers need a delayed voice load
       setTimeout(pickJapaneseVoice, 300);
     }
 
@@ -379,7 +501,7 @@
     els.totalCount.textContent = String(vocab.length);
     updateKnownStats();
     renderList();
-    buildDeck(state.deckOrder);
+    rebuildDeckFromFilter();
 
     console.log(`[jp-vocab] loaded ${vocab.length} words`);
   }

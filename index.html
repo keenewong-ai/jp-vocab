@@ -64,32 +64,48 @@
           <button type="button" id="btn-restart" class="btn btn-ghost">↺ 重頭</button>
         </div>
       </div>
+
+      <div class="filter-bar" role="group" aria-label="Memo 卡篩選">
+        <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">全部</button>
+        <button type="button" class="filter-chip" data-filter="focus" aria-pressed="false">★ 只睇重點關注</button>
+      </div>
+
       <div class="progress-bar" aria-hidden="true"><div id="progress-fill" class="progress-fill"></div></div>
 
-      <div class="card-stage">
-        <div id="flash-card" class="flash-card" role="button" tabindex="0" aria-label="點擊翻轉閃卡">
-          <button type="button" id="card-speak" class="icon-btn card-speak" title="讀出日文" aria-label="讀出日文">🔊</button>
-          <div class="card-face front">
-            <span class="card-label">日文</span>
-            <div id="card-jp" class="card-jp">…</div>
-            <span class="card-hint">點卡片翻轉 · 空白鍵亦可</span>
-          </div>
-          <div class="card-face back">
-            <span class="card-label">意思</span>
-            <div id="card-zh" class="card-zh">…</div>
-            <span class="card-hint">再點一次翻返去</span>
-          </div>
-        </div>
+      <div id="flash-empty" class="flash-empty" hidden>
+        <div class="flash-empty-icon" aria-hidden="true">★</div>
+        <p class="flash-empty-title">未有重點關注嘅生字</p>
+        <p class="flash-empty-desc">喺「全部」模式撳「重點關注」標記生字，之後就可以喺呢度溫習。</p>
+        <button type="button" id="btn-show-all" class="btn btn-ghost">睇返全部</button>
       </div>
 
-      <div class="flash-controls">
-        <button type="button" id="btn-known" class="btn btn-success">✓ 知道了</button>
-        <button type="button" id="btn-again" class="btn btn-warn">↻ 再睇</button>
-      </div>
-      <div class="nav-controls">
-        <button type="button" id="btn-prev" class="btn btn-ghost">← 上一張</button>
-        <button type="button" class="btn btn-ghost" id="btn-flip-hint" title="點卡片或空白鍵">翻轉</button>
-        <button type="button" id="btn-next" class="btn btn-ghost">下一張 →</button>
+      <div id="flash-main">
+        <div class="card-stage">
+          <div id="flash-card" class="flash-card" role="button" tabindex="0" aria-label="點擊翻轉閃卡">
+            <button type="button" id="card-speak" class="icon-btn card-speak" title="讀出日文" aria-label="讀出日文">🔊</button>
+            <div class="card-face front">
+              <span class="card-label">日文</span>
+              <div id="card-jp" class="card-jp">…</div>
+              <span class="card-hint">點卡片翻轉 · 空白鍵亦可</span>
+            </div>
+            <div class="card-face back">
+              <span class="card-label">意思</span>
+              <div id="card-zh" class="card-zh">…</div>
+              <span class="card-hint">再點一次翻返去</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flash-controls">
+          <button type="button" id="btn-focus" class="btn btn-focus">☆ 重點關注</button>
+          <button type="button" id="btn-known" class="btn btn-success">✓ 知道了</button>
+          <button type="button" id="btn-again" class="btn btn-warn">↻ 再睇</button>
+        </div>
+        <div class="nav-controls">
+          <button type="button" id="btn-prev" class="btn btn-ghost">← 上一張</button>
+          <button type="button" class="btn btn-ghost" id="btn-flip-hint" title="點卡片或空白鍵">翻轉</button>
+          <button type="button" id="btn-next" class="btn btn-ghost">下一張 →</button>
+        </div>
       </div>
 
       <p id="tts-note" class="tts-note" role="status"></p>

@@ -611,3 +611,120 @@ body {
     animation: none !important;
   }
 }
+
+/* Focus / filter */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.filter-chip {
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.filter-chip:hover {
+  color: var(--text);
+  background: var(--bg-hover);
+}
+
+.filter-chip.active {
+  background: rgba(240, 180, 90, 0.18);
+  color: var(--warn);
+  border-color: rgba(240, 180, 90, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(240, 180, 90, 0.15);
+}
+
+.filter-chip[data-filter="all"].active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: rgba(110, 168, 255, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(110, 168, 255, 0.15);
+}
+
+.btn-focus {
+  background: rgba(240, 180, 90, 0.1);
+  color: var(--warn);
+  border: 1px solid rgba(240, 180, 90, 0.3);
+}
+
+.btn-focus:hover {
+  background: rgba(240, 180, 90, 0.18);
+}
+
+.btn-focus.active {
+  background: rgba(240, 180, 90, 0.28);
+  color: #ffd28a;
+  border-color: rgba(240, 180, 90, 0.55);
+  box-shadow: 0 0 0 1px rgba(240, 180, 90, 0.2);
+}
+
+.flash-controls {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.flash-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.6rem;
+  min-height: 280px;
+  padding: 2rem 1.25rem;
+  margin-bottom: 1rem;
+  background: var(--bg-elevated);
+  border: 1px dashed var(--border);
+  border-radius: 20px;
+}
+
+.flash-empty[hidden] {
+  display: none;
+}
+
+.flash-empty-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  color: var(--warn);
+  background: var(--warn-soft);
+  border: 1px solid rgba(240, 180, 90, 0.3);
+  margin-bottom: 0.35rem;
+}
+
+.flash-empty-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.flash-empty-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 280px;
+  line-height: 1.55;
+  margin-bottom: 0.5rem;
+}
+
+#flash-main[hidden] {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .flash-controls {
+    grid-template-columns: 1fr;
+  }
+}
