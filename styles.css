@@ -551,26 +551,38 @@ body {
 }
 
 .flash-controls {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.6rem;
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
-.flash-controls .btn {
+.flash-controls .btn-nav {
+  flex: 0 0 auto;
+  width: 3.1rem;
+  min-width: 3.1rem;
+  padding: 0.85rem 0;
+  justify-content: center;
+  background: var(--bg-hover);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.flash-controls .btn-nav:hover {
+  background: var(--border);
+}
+
+.flash-controls .btn-nav .nav-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+.flash-controls .btn-focus {
+  flex: 1 1 auto;
+  min-width: 0;
   justify-content: center;
   padding: 0.85rem 1rem;
   font-size: 0.95rem;
-}
-
-.nav-controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-
-.nav-controls .btn {
-  justify-content: center;
 }
 
 .tts-note {
@@ -588,20 +600,7 @@ body {
   display: block;
 }
 
-.footer-note {
-  margin-top: 1.25rem;
-  padding: 0.75rem 0.5rem 0;
-  font-size: 0.7rem;
-  color: var(--text-dim);
-  text-align: center;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  opacity: 0.75;
-  position: relative;
-  z-index: 0;
-  pointer-events: none;
-}
+
 
 @media (max-width: 480px) {
   .app {
@@ -621,15 +620,14 @@ body {
     min-height: 240px;
   }
 
-  .flash-controls {
-    grid-template-columns: 1fr;
+  .flash-controls .btn-nav {
+    width: 2.85rem;
+    min-width: 2.85rem;
   }
 
-  .footer-note {
-    margin-top: 1rem;
-    padding-top: 0.5rem;
-    background: transparent;
-    opacity: 0.7;
+  .flash-controls .btn-focus {
+    font-size: 0.9rem;
+    padding: 0.8rem 0.65rem;
   }
 }
 
@@ -680,13 +678,6 @@ body {
   color: var(--accent);
   border-color: rgba(110, 168, 255, 0.35);
   box-shadow: inset 0 0 0 1px rgba(110, 168, 255, 0.15);
-}
-
-.flash-controls .btn-focus {
-  width: 100%;
-  justify-content: center;
-  padding: 0.85rem 1rem;
-  font-size: 0.95rem;
 }
 
 .btn-focus {
@@ -756,11 +747,7 @@ body {
   display: none;
 }
 
-@media (max-width: 480px) {
-  .flash-controls {
-    grid-template-columns: 1fr;
-  }
-}
+
 
 /* Autoplay */
 .btn-autoplay {
@@ -825,13 +812,13 @@ body {
   50% { opacity: 0.45; transform: scale(0.85); }
 }
 
-body.autoplaying .nav-controls {
+/* Keep 重點關注 tappable; dim prev/next during autoplay */
+body.autoplaying .flash-controls .btn-nav {
   opacity: 0.45;
   pointer-events: none;
 }
 
-/* Keep 重點關注 tappable during autoplay */
-body.autoplaying .flash-controls {
+body.autoplaying .flash-controls .btn-focus {
   opacity: 1;
   pointer-events: auto;
 }

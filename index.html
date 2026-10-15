@@ -118,18 +118,23 @@
         </div>
 
         <div class="flash-controls">
+          <button type="button" id="btn-prev" class="btn btn-nav" aria-label="上一張" title="上一張">
+            <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
           <button type="button" id="btn-focus" class="btn btn-focus">☆ 重點關注</button>
-        </div>
-        <div class="nav-controls">
-          <button type="button" id="btn-prev" class="btn btn-ghost">← 上一張</button>
-          <button type="button" id="btn-next" class="btn btn-ghost">下一張 →</button>
+          <button type="button" id="btn-next" class="btn btn-nav" aria-label="下一張" title="下一張">
+            <svg class="nav-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+            </svg>
+          </button>
         </div>
       </div>
 
       <p id="tts-note" class="tts-note" role="status"></p>
     </section>
 
-    <p class="footer-note">資料來自 vocab.json · 重點關注經雲端同步 · 朗讀：日文 ja-JP · 粵語 zh-HK</p>
   </div>
   <script src="app.js"></script>
 </body>
