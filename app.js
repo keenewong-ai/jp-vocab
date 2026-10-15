@@ -33,6 +33,9 @@
     btnShowAll: document.getElementById("btn-show-all"),
     filterChips: document.querySelectorAll(".filter-chip"),
     ttsNote: document.getElementById("tts-note"),
+    btnAutoplay: document.getElementById("btn-autoplay"),
+    autoplayStatus: document.getElementById("autoplay-status"),
+    autoplayStatusText: document.getElementById("autoplay-status-text"),
   };
 
   let vocab = [];
@@ -44,6 +47,13 @@
   let jpVoice = null;
   let deckFilter = "all"; // "all" | "focus"
   let state = loadState();
+  let zhVoice = null;
+  let zhVoiceLabel = "";
+  let autoplay = false;
+  let autoplayTimers = [];
+  let autoplayToken = 0;
+  const AUTOPLAY_ZH_DELAY_MS = 3000;
+  const AUTOPLAY_NEXT_PAUSE_MS = 1500;
 
   function loadState() {
     try {
@@ -140,12 +150,37 @@
     return preferred;
   }
 
-  function speak(text) {
+  function pickChineseVoice() {
+    if (!window.speechSynthesis) return null;
+    const voices = speechSynthesis.getVoices();
+    const preferred =
+      voices.find((v) => v.lang === "zh-HK") ||
+      voices.find((v) => /^yue\b/i.test(v.lang) || /yue/i.test(v.name)) ||
+      voices.find((v) => v.lang === "zh-TW") ||
+      voices.find((v) => v.lang.toLowerCase() === "zh-hant") ||
+      voices.find((v) => v.lang.startsWith("zh-CN")) ||
+      voices.find((v) => v.lang.startsWith("zh")) ||
+      null;
+    zhVoice = preferred;
+    if (preferred) {
+      zhVoiceLabel = preferred.lang || preferred.name || "";
+    } else {
+      zhVoiceLabel = "";
+    }
+    return preferred;
+  }
+
+  function refreshVoices() {
+    pickJapaneseVoice();
+    pickChineseVoice();
+  }
+
+  function speakJa(text, { cancel = true } = {}) {
     if (!window.speechSynthesis) {
       els.ttsNote.classList.add("visible");
-      return;
+      return null;
     }
-    speechSynthesis.cancel();
+    if (cancel) speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "ja-JP";
     u.rate = 0.9;
@@ -162,6 +197,32 @@
       document.querySelectorAll(".icon-btn.speaking").forEach((b) => b.classList.remove("speaking"));
     };
     speechSynthesis.speak(u);
+    return u;
+  }
+
+  function speakZh(text, { cancel = false } = {}) {
+    if (!window.speechSynthesis) {
+      els.ttsNote.classList.add("visible");
+      return null;
+    }
+    if (cancel) speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    if (!zhVoice) pickChineseVoice();
+    // Prefer Cantonese / HK; fall back to whatever Chinese voice we found
+    if (zhVoice) {
+      u.voice = zhVoice;
+      u.lang = zhVoice.lang || "zh-HK";
+    } else {
+      u.lang = "zh-HK";
+    }
+    u.rate = 0.95;
+    speechSynthesis.speak(u);
+    return u;
+  }
+
+  // Back-compat alias used by list / detail / card speak buttons
+  function speak(text) {
+    speakJa(text, { cancel: true });
   }
 
   function renderList() {
@@ -236,6 +297,7 @@
     const pool = getFilteredPool();
 
     if (pool.length === 0) {
+      if (autoplay) stopAutoplay();
       deck = [];
       deckIndex = 0;
       flipped = false;
@@ -297,10 +359,12 @@
   }
 
   function shuffleDeck() {
+    if (autoplay) stopAutoplay();
     rebuildDeckFromFilter({ shuffle: true });
   }
 
   function restartDeck() {
+    if (autoplay) stopAutoplay();
     if (!deck.length) return;
     deckIndex = 0;
     flipped = false;
@@ -310,6 +374,7 @@
 
   function setFilter(filter) {
     if (filter !== "all" && filter !== "focus") return;
+    if (autoplay) stopAutoplay();
     const currentId = currentCard()?.id ?? null;
     deckFilter = filter;
     els.filterChips.forEach((chip) => {
@@ -345,6 +410,7 @@
   }
 
   function goNext() {
+    if (autoplay) stopAutoplay();
     if (deckIndex < deck.length - 1) {
       deckIndex++;
       flipped = false;
@@ -354,6 +420,7 @@
   }
 
   function goPrev() {
+    if (autoplay) stopAutoplay();
     if (deckIndex > 0) {
       deckIndex--;
       flipped = false;
@@ -366,9 +433,160 @@
     return deck[deckIndex];
   }
 
+
+  function clearAutoplayTimers() {
+    for (const t of autoplayTimers) clearTimeout(t);
+    autoplayTimers = [];
+  }
+
+  function scheduleAutoplay(fn, ms) {
+    const id = setTimeout(fn, ms);
+    autoplayTimers.push(id);
+    return id;
+  }
+
+  function updateAutoplayUi() {
+    if (!els.btnAutoplay) return;
+    els.btnAutoplay.classList.toggle("active", autoplay);
+    els.btnAutoplay.setAttribute("aria-pressed", autoplay ? "true" : "false");
+    els.btnAutoplay.textContent = autoplay ? "⏹ 停止播放" : "▶ 自動播放";
+    document.body.classList.toggle("autoplaying", autoplay);
+
+    if (!els.autoplayStatus) return;
+    if (!autoplay) {
+      els.autoplayStatus.hidden = true;
+      els.autoplayStatus.classList.remove("fallback");
+      return;
+    }
+    els.autoplayStatus.hidden = false;
+    const filterLabel = deckFilter === "focus" ? "重點關注" : "全部";
+    let voiceNote = "";
+    let isFallback = false;
+    if (!window.speechSynthesis) {
+      voiceNote = " · 唔支援語音";
+      isFallback = true;
+    } else if (!zhVoice) {
+      voiceNote = " · 搵唔到中文語音，會用系統預設";
+      isFallback = true;
+    } else {
+      const lang = (zhVoice.lang || "").toLowerCase();
+      const name = (zhVoice.name || "").toLowerCase();
+      const isYue =
+        lang === "zh-hk" ||
+        lang.startsWith("yue") ||
+        name.includes("yue") ||
+        name.includes("cantonese") ||
+        name.includes("香港");
+      if (!isYue) {
+        voiceNote = ` · 中文語音：${zhVoice.lang || zhVoice.name}（非粵語，已盡量用接近嘅）`;
+        isFallback = true;
+      } else {
+        voiceNote = ` · 粵語 ${zhVoice.lang || ""}`;
+      }
+    }
+    els.autoplayStatus.classList.toggle("fallback", isFallback);
+    els.autoplayStatusText.textContent = `自動播放中（${filterLabel} · 隨機）${voiceNote}`;
+  }
+
+  function stopAutoplay({ silent = false } = {}) {
+    if (!autoplay && !autoplayTimers.length) {
+      updateAutoplayUi();
+      return;
+    }
+    autoplay = false;
+    autoplayToken += 1;
+    clearAutoplayTimers();
+    if (window.speechSynthesis) speechSynthesis.cancel();
+    updateAutoplayUi();
+    if (!silent) {
+      // leave card as-is
+    }
+  }
+
+  function pickRandomDeckIndex(excludeIndex = -1) {
+    if (!deck.length) return -1;
+    if (deck.length === 1) return 0;
+    let idx = Math.floor(Math.random() * deck.length);
+    // avoid immediate repeat when possible
+    let guard = 0;
+    while (idx === excludeIndex && guard < 8) {
+      idx = Math.floor(Math.random() * deck.length);
+      guard++;
+    }
+    return idx;
+  }
+
+  function goToAutoplayIndex(idx) {
+    if (idx < 0 || idx >= deck.length) return;
+    deckIndex = idx;
+    flipped = false;
+    renderCard();
+    saveState();
+  }
+
+  function runAutoplayStep(token) {
+    if (!autoplay || token !== autoplayToken) return;
+    if (!deck.length) {
+      stopAutoplay();
+      return;
+    }
+
+    const prev = deckIndex;
+    const idx = pickRandomDeckIndex(prev);
+    goToAutoplayIndex(idx);
+    const w = deck[deckIndex];
+    if (!w) {
+      stopAutoplay();
+      return;
+    }
+
+    // Show JP face, speak Japanese
+    flipped = false;
+    els.flashCard.classList.toggle("flipped", false);
+    speakJa(w.jp, { cancel: true });
+
+    // After 3s: flip to ZH and speak Cantonese
+    scheduleAutoplay(() => {
+      if (!autoplay || token !== autoplayToken) return;
+      flipped = true;
+      els.flashCard.classList.toggle("flipped", true);
+      speakZh(w.zh, { cancel: false });
+
+      // After Cantonese starts + short pause, go next.
+      // We wait fixed pause after the ZH delay rather than utterance end,
+      // so timing stays predictable even if TTS is slow/missing.
+      scheduleAutoplay(() => {
+        if (!autoplay || token !== autoplayToken) return;
+        runAutoplayStep(token);
+      }, AUTOPLAY_NEXT_PAUSE_MS + 1200);
+    }, AUTOPLAY_ZH_DELAY_MS);
+  }
+
+  function startAutoplay() {
+    if (!deck.length) return;
+    if (!window.speechSynthesis) {
+      els.ttsNote.classList.add("visible");
+      els.ttsNote.textContent =
+        "呢個瀏覽器唔支援語音朗讀（Web Speech API）。請用 Chrome / Edge / Safari 試吓。";
+    }
+    refreshVoices();
+    autoplay = true;
+    autoplayToken += 1;
+    const token = autoplayToken;
+    clearAutoplayTimers();
+    updateAutoplayUi();
+    runAutoplayStep(token);
+  }
+
+  function toggleAutoplay() {
+    if (autoplay) stopAutoplay();
+    else startAutoplay();
+  }
+
   // Events
   els.tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
+      if (tab.dataset.panel !== "panel-flash" && autoplay) stopAutoplay();
       els.tabs.forEach((t) => t.classList.remove("active"));
       els.panels.forEach((p) => p.classList.remove("active"));
       tab.classList.add("active");
@@ -428,6 +646,7 @@
   });
 
   els.btnKnown.addEventListener("click", () => {
+    if (autoplay) stopAutoplay();
     const w = currentCard();
     if (!w) return;
     markKnown(w.id, true);
@@ -437,6 +656,7 @@
   });
 
   els.btnAgain.addEventListener("click", () => {
+    if (autoplay) stopAutoplay();
     const w = currentCard();
     if (!w) return;
     markKnown(w.id, false);
@@ -449,6 +669,9 @@
   els.btnPrev.addEventListener("click", goPrev);
   els.btnShuffle.addEventListener("click", shuffleDeck);
   els.btnRestart.addEventListener("click", restartDeck);
+  if (els.btnAutoplay) {
+    els.btnAutoplay.addEventListener("click", toggleAutoplay);
+  }
 
   els.filterChips.forEach((chip) => {
     chip.addEventListener("click", () => setFilter(chip.dataset.filter));
@@ -470,8 +693,14 @@
     const flashActive = document.getElementById("panel-flash").classList.contains("active");
     if (!flashActive) return;
     if (!deck.length) return;
+    if (e.key === "Escape" && autoplay) {
+      e.preventDefault();
+      stopAutoplay();
+      return;
+    }
     if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
+      if (autoplay) stopAutoplay();
       flipCard();
     } else if (e.key === "ArrowRight") {
       e.preventDefault();
@@ -488,9 +717,9 @@
       els.ttsNote.textContent =
         "呢個瀏覽器唔支援語音朗讀（Web Speech API）。請用 Chrome / Edge / Safari 試吓。";
     } else {
-      pickJapaneseVoice();
-      speechSynthesis.onvoiceschanged = () => pickJapaneseVoice();
-      setTimeout(pickJapaneseVoice, 300);
+      refreshVoices();
+      speechSynthesis.onvoiceschanged = () => refreshVoices();
+      setTimeout(refreshVoices, 300);
     }
 
     const res = await fetch("vocab.json");

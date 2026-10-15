@@ -60,6 +60,7 @@
       <div class="flash-toolbar">
         <div class="progress-text" id="flash-progress"><strong>1</strong> / —</div>
         <div style="display:flex;gap:0.4rem;flex-wrap:wrap">
+          <button type="button" id="btn-autoplay" class="btn btn-autoplay" aria-pressed="false">▶ 自動播放</button>
           <button type="button" id="btn-shuffle" class="btn btn-ghost">🔀 洗牌</button>
           <button type="button" id="btn-restart" class="btn btn-ghost">↺ 重頭</button>
         </div>
@@ -71,6 +72,11 @@
       </div>
 
       <div class="progress-bar" aria-hidden="true"><div id="progress-fill" class="progress-fill"></div></div>
+
+      <div id="autoplay-status" class="autoplay-status" hidden role="status" aria-live="polite">
+        <span class="autoplay-dot" aria-hidden="true"></span>
+        <span id="autoplay-status-text">自動播放中…</span>
+      </div>
 
       <div id="flash-empty" class="flash-empty" hidden>
         <div class="flash-empty-icon" aria-hidden="true">★</div>
@@ -111,7 +117,7 @@
       <p id="tts-note" class="tts-note" role="status"></p>
     </section>
 
-    <p class="footer-note">資料來自 vocab.json · 進度儲存於本機瀏覽器 · 朗讀用 Web Speech API（ja-JP）</p>
+    <p class="footer-note">資料來自 vocab.json · 進度儲存於本機瀏覽器 · 朗讀用 Web Speech API（日文 ja-JP · 中文 zh-HK）</p>
   </div>
   <script src="app.js"></script>
 </body>
