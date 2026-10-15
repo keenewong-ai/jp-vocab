@@ -34,6 +34,7 @@
     btnAutoplay: document.getElementById("btn-autoplay"),
     autoplayStatus: document.getElementById("autoplay-status"),
     autoplayStatusText: document.getElementById("autoplay-status-text"),
+    syncStatus: document.getElementById("sync-status"),
   };
 
   let vocab = [];
@@ -54,6 +55,18 @@
   let autoplayToken = 0;
   const AUTOPLAY_ZH_DELAY_MS = 3000;
   const AUTOPLAY_NEXT_PAUSE_MS = 1500;
+  const AUTOPLAY_FLIP_BACK_MS = 400;
+
+  // Supabase cloud sync for 重點關注 (anon key is intentional for frontend)
+  const SUPABASE_URL = "https://avfpoaipqkqxzuaqjutv.supabase.co";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF2ZnBvYWlwcWtxeHp1YXFqdXR2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwNDMzNDIsImV4cCI6MjEwNzYxOTM0Mn0.zPmiuQPPA61QLdbJzkAAnUIkCEtKlFhdlEPiomVuJDY";
+  const SYNC_CODE = "keene";
+  const SYNC_POLL_MS = 45000;
+  let syncTimer = null;
+  let syncDebounce = null;
+  let syncStatusKind = "syncing"; // syncing | synced | offline | error
+  let lastRemoteUpdatedAt = null;
 
   function loadState() {
     try {
@@ -83,6 +96,182 @@
     );
   }
 
+  function setSyncStatus(kind, label) {
+    syncStatusKind = kind;
+    if (!els.syncStatus) return;
+    els.syncStatus.className = "sync-status " + kind;
+    els.syncStatus.textContent = label;
+  }
+
+  function supabaseHeaders(extra = {}) {
+    return {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: "Bearer " + SUPABASE_ANON_KEY,
+      "Content-Type": "application/json",
+      ...extra,
+    };
+  }
+
+  function normalizeFocusIds(ids) {
+    if (!Array.isArray(ids)) return [];
+    const out = [];
+    const seen = new Set();
+    for (const x of ids) {
+      const n = Number(x);
+      if (!Number.isFinite(n) || seen.has(n)) continue;
+      seen.add(n);
+      out.push(n);
+    }
+    out.sort((a, b) => a - b);
+    return out;
+  }
+
+  function unionFocusIds(a, b) {
+    return normalizeFocusIds([...(a || []), ...(b || [])]);
+  }
+
+  function focusIdsEqual(a, b) {
+    const x = normalizeFocusIds(a);
+    const y = normalizeFocusIds(b);
+    if (x.length !== y.length) return false;
+    return x.every((v, i) => v === y[i]);
+  }
+
+  async function fetchRemoteFocus() {
+    const url =
+      SUPABASE_URL +
+      "/rest/v1/jp_vocab_sync?sync_code=eq." +
+      encodeURIComponent(SYNC_CODE) +
+      "&select=focus_ids,updated_at";
+    const res = await fetch(url, {
+      method: "GET",
+      headers: supabaseHeaders({ Accept: "application/json" }),
+    });
+    if (!res.ok) {
+      throw new Error("GET sync failed: " + res.status);
+    }
+    const rows = await res.json();
+    if (!Array.isArray(rows) || !rows.length) {
+      return { focusIds: [], updatedAt: null };
+    }
+    return {
+      focusIds: normalizeFocusIds(rows[0].focus_ids),
+      updatedAt: rows[0].updated_at || null,
+    };
+  }
+
+  async function upsertRemoteFocus(focusIds) {
+    const ids = normalizeFocusIds(focusIds);
+    const url =
+      SUPABASE_URL +
+      "/rest/v1/jp_vocab_sync?on_conflict=sync_code";
+    const res = await fetch(url, {
+      method: "POST",
+      headers: supabaseHeaders({
+        Prefer: "resolution=merge-duplicates,return=representation",
+      }),
+      body: JSON.stringify({
+        sync_code: SYNC_CODE,
+        focus_ids: ids,
+        updated_at: new Date().toISOString(),
+      }),
+    });
+    if (!res.ok) {
+      // Fallback PATCH if upsert POST not allowed
+      const patchUrl =
+        SUPABASE_URL +
+        "/rest/v1/jp_vocab_sync?sync_code=eq." +
+        encodeURIComponent(SYNC_CODE);
+      const patchRes = await fetch(patchUrl, {
+        method: "PATCH",
+        headers: supabaseHeaders({ Prefer: "return=representation" }),
+        body: JSON.stringify({
+          focus_ids: ids,
+          updated_at: new Date().toISOString(),
+        }),
+      });
+      if (!patchRes.ok) {
+        throw new Error("upsert sync failed: " + res.status + "/" + patchRes.status);
+      }
+      const patched = await patchRes.json();
+      if (Array.isArray(patched) && patched[0]) {
+        lastRemoteUpdatedAt = patched[0].updated_at || lastRemoteUpdatedAt;
+      }
+      return ids;
+    }
+    const rows = await res.json();
+    if (Array.isArray(rows) && rows[0]) {
+      lastRemoteUpdatedAt = rows[0].updated_at || lastRemoteUpdatedAt;
+    }
+    return ids;
+  }
+
+  function schedulePushFocus() {
+    if (syncDebounce) clearTimeout(syncDebounce);
+    setSyncStatus("syncing", "同步中…");
+    syncDebounce = setTimeout(() => {
+      pushFocusNow().catch(() => {});
+    }, 300);
+  }
+
+  async function pushFocusNow() {
+    try {
+      setSyncStatus("syncing", "同步中…");
+      await upsertRemoteFocus(state.focusIds);
+      setSyncStatus("synced", "已同步");
+    } catch (err) {
+      console.warn("[jp-vocab] push focus failed", err);
+      setSyncStatus("offline", "離線（用本機）");
+    }
+  }
+
+  async function pullAndMergeFocus({ fromPoll = false } = {}) {
+    try {
+      if (!fromPoll) setSyncStatus("syncing", "同步中…");
+      const remote = await fetchRemoteFocus();
+      lastRemoteUpdatedAt = remote.updatedAt;
+      const local = normalizeFocusIds(state.focusIds);
+      const merged = unionFocusIds(local, remote.focusIds);
+      const changedLocal = !focusIdsEqual(merged, local);
+      const changedRemote = !focusIdsEqual(merged, remote.focusIds);
+
+      if (changedLocal) {
+        state.focusIds = merged;
+        saveState();
+        updateFocusBtn();
+        if (deckFilter === "focus") {
+          const preferId = currentCard()?.id ?? null;
+          rebuildDeckFromFilter({ preferId });
+        }
+      }
+
+      if (changedRemote) {
+        await upsertRemoteFocus(merged);
+      }
+
+      setSyncStatus("synced", "已同步");
+      return merged;
+    } catch (err) {
+      console.warn("[jp-vocab] pull focus failed", err);
+      setSyncStatus("offline", "離線（用本機）");
+      return state.focusIds;
+    }
+  }
+
+  function startFocusSyncPolling() {
+    if (syncTimer) clearInterval(syncTimer);
+    syncTimer = setInterval(() => {
+      if (document.visibilityState === "hidden") return;
+      pullAndMergeFocus({ fromPoll: true }).catch(() => {});
+    }, SYNC_POLL_MS);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
+        pullAndMergeFocus({ fromPoll: true }).catch(() => {});
+      }
+    });
+  }
+
   function isKnown(id) {
     return state.knownIds.includes(id);
   }
@@ -109,8 +298,10 @@
     } else {
       state.focusIds = [...state.focusIds, id];
     }
+    state.focusIds = normalizeFocusIds(state.focusIds);
     saveState();
     updateFocusBtn();
+    schedulePushFocus();
     // If filtering to focus only and we just unfocused the last card, rebuild
     if (deckFilter === "focus") {
       const currentId = id;
@@ -543,6 +734,7 @@
     if (idx < 0 || idx >= deck.length) return;
     deckIndex = idx;
     flipped = false;
+    if (els.flashCard) els.flashCard.classList.remove("flipped");
     renderCard();
     saveState();
   }
@@ -575,12 +767,16 @@
       els.flashCard.classList.toggle("flipped", true);
       speakZh(w.zh, { cancel: false });
 
-      // After Cantonese starts + short pause, go next.
-      // We wait fixed pause after the ZH delay rather than utterance end,
-      // so timing stays predictable even if TTS is slow/missing.
+      // After Cantonese + short pause: flip back to JP face first,
+      // so the next word never briefly shows the previous ZH meaning.
       scheduleAutoplay(() => {
         if (!autoplay || token !== autoplayToken) return;
-        runAutoplayStep(token);
+        flipped = false;
+        els.flashCard.classList.toggle("flipped", false);
+        scheduleAutoplay(() => {
+          if (!autoplay || token !== autoplayToken) return;
+          runAutoplayStep(token);
+        }, AUTOPLAY_FLIP_BACK_MS);
       }, AUTOPLAY_NEXT_PAUSE_MS + 1200);
     }, AUTOPLAY_ZH_DELAY_MS);
   }
@@ -732,6 +928,10 @@
     updateKnownStats();
     renderList();
     rebuildDeckFromFilter();
+
+    setSyncStatus("syncing", "同步中…");
+    await pullAndMergeFocus();
+    startFocusSyncPolling();
 
     console.log(`[jp-vocab] loaded ${vocab.length} words`);
   }

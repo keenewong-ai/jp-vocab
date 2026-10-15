@@ -810,3 +810,29 @@ body.autoplaying #btn-autoplay {
   opacity: 1;
   pointer-events: auto;
 }
+
+.sync-status {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  background: transparent;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.sync-status.syncing {
+  color: var(--accent);
+}
+
+.sync-status.synced {
+  color: #7dcea0;
+}
+
+.sync-status.offline,
+.sync-status.error {
+  color: var(--warn);
+}

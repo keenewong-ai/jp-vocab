@@ -69,6 +69,7 @@
       <div class="filter-bar" role="group" aria-label="Memo 卡篩選">
         <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">全部</button>
         <button type="button" class="filter-chip" data-filter="focus" aria-pressed="false">★ 只睇重點關注</button>
+        <span id="sync-status" class="sync-status" role="status" aria-live="polite" title="重點關注雲端同步">同步中…</span>
       </div>
 
       <div class="progress-bar" aria-hidden="true"><div id="progress-fill" class="progress-fill"></div></div>
@@ -114,7 +115,7 @@
       <p id="tts-note" class="tts-note" role="status"></p>
     </section>
 
-    <p class="footer-note">資料來自 vocab.json · 進度儲存於本機瀏覽器 · 朗讀用 Web Speech API（日文 ja-JP · 粵語 zh-HK）</p>
+    <p class="footer-note">資料來自 vocab.json · 重點關注經雲端同步 · 「已識」存本機 · 朗讀：日文 ja-JP · 粵語 zh-HK</p>
   </div>
   <script src="app.js"></script>
 </body>
