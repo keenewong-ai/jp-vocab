@@ -67,6 +67,7 @@
         <div class="progress-text" id="flash-progress"><strong>1</strong> / —</div>
         <div style="display:flex;gap:0.4rem;flex-wrap:wrap">
           <button type="button" id="btn-autoplay" class="btn btn-autoplay" aria-pressed="false">▶ 自動播放</button>
+          <button type="button" id="btn-romaji" class="btn btn-ghost btn-romaji" aria-pressed="false" title="顯示／隱藏羅馬字讀音">あ→a</button>
           <button type="button" id="btn-shuffle" class="btn btn-ghost">🔀 洗牌</button>
           <button type="button" id="btn-restart" class="btn btn-ghost">↺ 重頭</button>
         </div>
@@ -108,6 +109,7 @@
             <div class="card-face front">
               <span class="card-label">日文</span>
               <div id="card-jp" class="card-jp">…</div>
+              <div id="card-romaji" class="card-romaji" hidden lang="ja-Latn"></div>
               <span class="card-hint card-hint-desktop">點卡片翻轉 · 空白鍵亦可</span>
               <span class="card-hint card-hint-touch">點卡片讀日文 · 左右滑翻轉</span>
             </div>

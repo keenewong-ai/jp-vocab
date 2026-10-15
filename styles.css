@@ -540,6 +540,22 @@ body {
   word-break: break-word;
 }
 
+.card-romaji {
+  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  word-break: break-word;
+  margin-top: -0.35rem;
+}
+
+.btn-romaji.active {
+  background: rgba(110, 168, 255, 0.18);
+  border-color: rgba(110, 168, 255, 0.45);
+  color: var(--accent);
+}
+
 .card-hint {
   font-size: 0.8rem;
   color: var(--text-dim);

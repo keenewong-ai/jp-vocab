@@ -23,7 +23,9 @@
     flashEmptyDesc: document.getElementById("flash-empty-desc"),
     cardJp: document.getElementById("card-jp"),
     cardZh: document.getElementById("card-zh"),
+    cardRomaji: document.getElementById("card-romaji"),
     cardSpeak: document.getElementById("card-speak"),
+    btnRomaji: document.getElementById("btn-romaji"),
     btnFocus: document.getElementById("btn-focus"),
     btnPrev: document.getElementById("btn-prev"),
     btnNext: document.getElementById("btn-next"),
@@ -51,6 +53,7 @@
   let deckFilter = "all"; // "all" | "focus" | "unfocus"
   let listSortMode = "id"; // "id" | "added_desc" | "added_asc"
   let flashSortMode = "id";
+  let showRomaji = false; // default hidden
   let state = loadState();
   let zhVoice = null;
   let zhVoiceLabel = "";
@@ -77,15 +80,16 @@
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return { focusIds: [], deckOrder: null, deckIndex: 0 };
+      if (!raw) return { focusIds: [], deckOrder: null, deckIndex: 0, showRomaji: false };
       const parsed = JSON.parse(raw);
       return {
         focusIds: Array.isArray(parsed.focusIds) ? parsed.focusIds : [],
         deckOrder: Array.isArray(parsed.deckOrder) ? parsed.deckOrder : null,
         deckIndex: typeof parsed.deckIndex === "number" ? parsed.deckIndex : 0,
+        showRomaji: !!parsed.showRomaji,
       };
     } catch {
-      return { focusIds: [], deckOrder: null, deckIndex: 0 };
+      return { focusIds: [], deckOrder: null, deckIndex: 0, showRomaji: false };
     }
   }
 
@@ -96,6 +100,7 @@
         focusIds: state.focusIds,
         deckOrder: state.deckOrder,
         deckIndex: deckIndex,
+        showRomaji: showRomaji,
       })
     );
   }
@@ -476,6 +481,7 @@
           (w) =>
             w.jp.toLowerCase().includes(q) ||
             w.zh.toLowerCase().includes(q) ||
+            (w.romaji && w.romaji.toLowerCase().includes(q)) ||
             String(w.id).includes(q)
         );
     filtered = sortWords(matched, listSortMode);
@@ -690,6 +696,11 @@
     const w = deck[deckIndex];
     els.cardJp.textContent = w.jp;
     els.cardZh.textContent = w.zh;
+    if (els.cardRomaji) {
+      const r = (w.romaji || "").trim();
+      els.cardRomaji.textContent = r;
+      els.cardRomaji.hidden = !showRomaji || !r;
+    }
     els.flashCard.classList.toggle("flipped", flipped);
     const filterLabel = filterLabelShort();
     els.flashProgress.innerHTML = `<strong>${deckIndex + 1}</strong> / ${deck.length}${filterLabel}`;
@@ -876,6 +887,22 @@
     else startAutoplay();
   }
 
+  function updateRomajiBtn() {
+    if (!els.btnRomaji) return;
+    els.btnRomaji.classList.toggle("active", showRomaji);
+    els.btnRomaji.setAttribute("aria-pressed", showRomaji ? "true" : "false");
+    els.btnRomaji.title = showRomaji ? "隱藏羅馬字讀音" : "顯示羅馬字讀音";
+    els.btnRomaji.setAttribute("aria-label", showRomaji ? "隱藏羅馬字" : "顯示羅馬字");
+  }
+
+  function toggleRomaji() {
+    showRomaji = !showRomaji;
+    state.showRomaji = showRomaji;
+    updateRomajiBtn();
+    renderCard();
+    saveState();
+  }
+
   // Events
   els.tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -1016,6 +1043,9 @@
   if (els.btnAutoplay) {
     els.btnAutoplay.addEventListener("click", toggleAutoplay);
   }
+  if (els.btnRomaji) {
+    els.btnRomaji.addEventListener("click", toggleRomaji);
+  }
 
   els.filterChips.forEach((chip) => {
     chip.addEventListener("click", () => setFilter(chip.dataset.filter));
@@ -1073,8 +1103,12 @@
       id: Number(w.id),
       jp: String(w.jp || ""),
       zh: String(w.zh || ""),
+      romaji: String(w.romaji || ""),
       added_at: w.added_at ? String(w.added_at).slice(0, 10) : "2026-10-16",
     }));
+
+    showRomaji = !!state.showRomaji;
+    updateRomajiBtn();
 
     els.totalCount.textContent = String(vocab.length);
     if (els.listSort) els.listSort.value = listSortMode;

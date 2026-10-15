@@ -3,3246 +3,3787 @@
     "jp": "おさら",
     "zh": "盤子",
     "id": 1,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "osara"
   },
   {
     "jp": "いらっしゃい",
     "zh": "歡迎",
     "id": 2,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "irasshai"
   },
   {
     "jp": "ナイフ",
     "zh": "刀子",
     "id": 3,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "naifu"
   },
   {
     "jp": "きります",
     "zh": "切",
     "id": 4,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kirimasu"
   },
   {
     "jp": "六百",
     "zh": "六百",
     "id": 5,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "roppyaku"
   },
   {
     "jp": "おもちゃ",
     "zh": "玩具",
     "id": 6,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "omocha"
   },
   {
     "jp": "ヘッドホン",
     "zh": "耳機",
     "id": 7,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "heddohon"
   },
   {
     "jp": "タブレット",
     "zh": "平板電腦",
     "id": 8,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "taburetto"
   },
   {
     "jp": "でんきや",
     "zh": "電器店",
     "id": 9,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "denkiya"
   },
   {
     "jp": "カップ",
     "zh": "杯子",
     "id": 10,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kappu"
   },
   {
     "jp": "百円ショップ",
     "zh": "一百日元店",
     "id": 11,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hyakuen shoppu"
   },
   {
     "jp": "フォーク",
     "zh": "叉子",
     "id": 12,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "fooku"
   },
   {
     "jp": "わたります",
     "zh": "過",
     "id": 13,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "watarimasu"
   },
   {
     "jp": "とちゅうで",
     "zh": "在路上",
     "id": 14,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tochuude"
   },
   {
     "jp": "フライドチキン",
     "zh": "炸雞",
     "id": 15,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "furaidochikin"
   },
   {
     "jp": "どうやって",
     "zh": "怎麼",
     "id": 16,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "douyatte"
   },
   {
     "jp": "みち",
     "zh": "路",
     "id": 17,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "michi"
   },
   {
     "jp": "ポテトチップス",
     "zh": "薯片",
     "id": 18,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "potetochippusu"
   },
   {
     "jp": "まちます",
     "zh": "等，等待",
     "id": 19,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "machimasu"
   },
   {
     "jp": "いとこ",
     "zh": "表親",
     "id": 20,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "itoko"
   },
   {
     "jp": "円",
     "zh": "日元",
     "id": 21,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "en"
   },
   {
     "jp": "家",
     "zh": "宅，家，房子",
     "id": 22,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ie"
   },
   {
     "jp": "バー",
     "zh": "酒吧",
     "id": 23,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "baa"
   },
   {
     "jp": "カラオケ",
     "zh": "卡拉OK",
     "id": 24,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "karaoke"
   },
   {
     "jp": "さいご",
     "zh": "最後",
     "id": 25,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "saigo"
   },
   {
     "jp": "このあと",
     "zh": "這之後",
     "id": 26,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "konoato"
   },
   {
     "jp": "うたいます",
     "zh": "唱",
     "id": 27,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "utaimasu"
   },
   {
     "jp": "ごご",
     "zh": "下午",
     "id": 28,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "gogo"
   },
   {
     "jp": "クライアント",
     "zh": "客戶",
     "id": 29,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kuraianto"
   },
   {
     "jp": "パソコン",
     "zh": "電腦",
     "id": 30,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "pasokon"
   },
   {
     "jp": "プレゼン",
     "zh": "報告會",
     "id": 31,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "purezen"
   },
   {
     "jp": "しょくどう",
     "zh": "食堂",
     "id": 32,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shokudou"
   },
   {
     "jp": "まで",
     "zh": "到",
     "id": 33,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "made"
   },
   {
     "jp": "ひる休み",
     "zh": "午休",
     "id": 34,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hiruyasumi"
   },
   {
     "jp": "チャーハン",
     "zh": "炒飯",
     "id": 35,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chaahan"
   },
   {
     "jp": "フライドポテト",
     "zh": "薯條",
     "id": 36,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "furaidopoteto"
   },
   {
     "jp": "プリンター",
     "zh": "打印機",
     "id": 37,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "purintaa"
   },
   {
     "jp": "ごぜん",
     "zh": "上午",
     "id": 38,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "gozen"
   },
   {
     "jp": "オリエンテーション",
     "zh": "迎新會",
     "id": 39,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "orienteeshon"
   },
   {
     "jp": "から",
     "zh": "從",
     "id": 40,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kara"
   },
   {
     "jp": "うけつけ",
     "zh": "前臺",
     "id": 41,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "uketsuke"
   },
   {
     "jp": "エンジニア",
     "zh": "工程師",
     "id": 42,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "enjinia"
   },
   {
     "jp": "よろしくおねがいします",
     "zh": "請多關照",
     "id": 43,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yoroshiku onegai shimasu"
   },
   {
     "jp": "何階",
     "zh": "幾樓",
     "id": 44,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nankai"
   },
   {
     "jp": "ミーティング",
     "zh": "會議",
     "id": 45,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "miiteingu"
   },
   {
     "jp": "ポスター",
     "zh": "海報",
     "id": 46,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "posutaa"
   },
   {
     "jp": "ドキュメンタリー",
     "zh": "紀錄片",
     "id": 47,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "dokyumentarii"
   },
   {
     "jp": "はいゆう",
     "zh": "演員",
     "id": 48,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "haiyuu"
   },
   {
     "jp": "RPG",
     "zh": "角色扮演遊戲",
     "id": 49,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "RPG"
   },
   {
     "jp": "カードゲーム",
     "zh": "紙牌遊戲",
     "id": 50,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kaadogeemu"
   },
   {
     "jp": "パズル",
     "zh": "益智遊戲",
     "id": 51,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "pazuru"
   },
   {
     "jp": "むずかしい",
     "zh": "難",
     "id": 52,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "muzukashii"
   },
   {
     "jp": "アルバム",
     "zh": "專輯",
     "id": 53,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "arubamu"
   },
   {
     "jp": "アニソン",
     "zh": "動漫歌曲",
     "id": 54,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "anison"
   },
   {
     "jp": "ポップス",
     "zh": "流行音樂",
     "id": 55,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "poppusu"
   },
   {
     "jp": "バンド",
     "zh": "樂隊",
     "id": 56,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "bando"
   },
   {
     "jp": "フィクション",
     "zh": "虛構",
     "id": 57,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "fikushon"
   },
   {
     "jp": "あまり",
     "zh": "不太",
     "id": 58,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "amari"
   },
   {
     "jp": "話",
     "zh": "故事",
     "id": 59,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hanashi"
   },
   {
     "jp": "ノンフィクション",
     "zh": "非虛構",
     "id": 60,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nonfikushon"
   },
   {
     "jp": "セール",
     "zh": "促銷",
     "id": 61,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "seeru"
   },
   {
     "jp": "本や",
     "zh": "書店",
     "id": 62,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "honya"
   },
   {
     "jp": "コーナー",
     "zh": "專區",
     "id": 63,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "koonaa"
   },
   {
     "jp": "ビール",
     "zh": "啤酒",
     "id": 64,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "biiru"
   },
   {
     "jp": "ぶたにく",
     "zh": "豬肉",
     "id": 65,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "butaniku"
   },
   {
     "jp": "コーラ",
     "zh": "可樂",
     "id": 66,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "koora"
   },
   {
     "jp": "しょっぱい",
     "zh": "鹹",
     "id": 67,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shoppai"
   },
   {
     "jp": "とんかつ",
     "zh": "炸豬排",
     "id": 68,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tonkatsu"
   },
   {
     "jp": "しお",
     "zh": "鹽",
     "id": 69,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shio"
   },
   {
     "jp": "なま",
     "zh": "生",
     "id": 70,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nama"
   },
   {
     "jp": "ソース",
     "zh": "醬汁",
     "id": 71,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "soosu"
   },
   {
     "jp": "つかいます",
     "zh": "使用",
     "id": 72,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tsukaimasu"
   },
   {
     "jp": "ぎゅうどん",
     "zh": "牛肉飯",
     "id": 73,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "gyuudon"
   },
   {
     "jp": "魚",
     "zh": "魚",
     "id": 74,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sakana"
   },
   {
     "jp": "でも",
     "zh": "但是",
     "id": 75,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "demo"
   },
   {
     "jp": "とうふ",
     "zh": "豆腐",
     "id": 76,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "toufu"
   },
   {
     "jp": "やさい",
     "zh": "蔬菜",
     "id": 77,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yasai"
   },
   {
     "jp": "スーパー",
     "zh": "超市",
     "id": 78,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "suupaa"
   },
   {
     "jp": "もっと",
     "zh": "更多的",
     "id": 79,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "motto"
   },
   {
     "jp": "しょうゆ",
     "zh": "醬油",
     "id": 80,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shouyu"
   },
   {
     "jp": "卵",
     "zh": "雞蛋",
     "id": 81,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tamago"
   },
   {
     "jp": "レシピ",
     "zh": "食譜",
     "id": 82,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "reshipi"
   },
   {
     "jp": "ひま",
     "zh": "有空",
     "id": 83,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hima"
   },
   {
     "jp": "いっしょに",
     "zh": "一起",
     "id": 84,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "isshoni"
   },
   {
     "jp": "木曜日",
     "zh": "星期四",
     "id": 85,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mokuyoubi"
   },
   {
     "jp": "作ります",
     "zh": "做",
     "id": 86,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tsukurimasu"
   },
   {
     "jp": "フランスりょうり",
     "zh": "法國菜",
     "id": 87,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "furansu ryouri"
   },
   {
     "jp": "にく",
     "zh": "肉",
     "id": 88,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "niku"
   },
   {
     "jp": "あと",
     "zh": "後",
     "id": 89,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ato"
   },
   {
     "jp": "しゃしん",
     "zh": "照片",
     "id": 90,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shashin"
   },
   {
     "jp": "ライオン",
     "zh": "獅子",
     "id": 91,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "raion"
   },
   {
     "jp": "どうぶつえん",
     "zh": "動物園",
     "id": 92,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "doubutsuen"
   },
   {
     "jp": "ひろば",
     "zh": "廣場",
     "id": 93,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hiroba"
   },
   {
     "jp": "で",
     "zh": "用，因爲，坐",
     "id": 94,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "de"
   },
   {
     "jp": "え",
     "zh": "畫",
     "id": 95,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "e"
   },
   {
     "jp": "びじゅつかん",
     "zh": "美術館",
     "id": 96,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "bijutsukan"
   },
   {
     "jp": "スーツケース",
     "zh": "行李箱",
     "id": 97,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "suutsukeesu"
   },
   {
     "jp": "ひこうき",
     "zh": "飛機",
     "id": 98,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hikouki"
   },
   {
     "jp": "チケット",
     "zh": "票",
     "id": 99,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chiketto"
   },
   {
     "jp": "会います",
     "zh": "見面",
     "id": 100,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "aimasu"
   },
   {
     "jp": "何",
     "zh": "什麼",
     "id": 101,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nani"
   },
   {
     "jp": "来月",
     "zh": "下個月",
     "id": 102,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "raigetsu"
   },
   {
     "jp": "りょこう",
     "zh": "旅行",
     "id": 103,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ryokou"
   },
   {
     "jp": "フランス",
     "zh": "法國",
     "id": 104,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "furansu"
   },
   {
     "jp": "ステーキ",
     "zh": "牛排",
     "id": 105,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "suteeki"
   },
   {
     "jp": "がたのしみです",
     "zh": "期待",
     "id": 106,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ga tanoshimi desu"
   },
   {
     "jp": "ワイン",
     "zh": "葡萄酒",
     "id": 107,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "wain"
   },
   {
     "jp": "ホットドッグ",
     "zh": "熱狗",
     "id": 108,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hottodoggu"
   },
   {
     "jp": "ポップコーン",
     "zh": "爆米花",
     "id": 109,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "poppukoon"
   },
   {
     "jp": "えいがかん",
     "zh": "電影院",
     "id": 110,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "eigakan"
   },
   {
     "jp": "かんとく",
     "zh": "導演",
     "id": 111,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kantoku"
   },
   {
     "jp": "よやくします",
     "zh": "預訂",
     "id": 112,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yoyakushimasu"
   },
   {
     "jp": "スーツ",
     "zh": "西裝",
     "id": 113,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "suutsu"
   },
   {
     "jp": "ブラウス",
     "zh": "女式襯衫",
     "id": 114,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "burausu"
   },
   {
     "jp": "ドレス",
     "zh": "連衣裙",
     "id": 115,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "doresu"
   },
   {
     "jp": "きます",
     "zh": "穿",
     "id": 116,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kimasu"
   },
   {
     "jp": "おしゃれ",
     "zh": "時髦",
     "id": 117,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "oshare"
   },
   {
     "jp": "うでどけい",
     "zh": "手錶",
     "id": 118,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "udedokei"
   },
   {
     "jp": "ネックレス",
     "zh": "項鍊",
     "id": 119,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nekkuresu"
   },
   {
     "jp": "プレゼント",
     "zh": "禮物",
     "id": 120,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "purezento"
   },
   {
     "jp": "たんじょうび",
     "zh": "生日",
     "id": 121,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tanjoubi"
   },
   {
     "jp": "人",
     "zh": "個，個人，人",
     "id": 122,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nin"
   },
   {
     "jp": "げんき",
     "zh": "有活力",
     "id": 123,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "genki"
   },
   {
     "jp": "デート",
     "zh": "約會",
     "id": 124,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "deeto"
   },
   {
     "jp": "だいすき",
     "zh": "很喜歡",
     "id": 125,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "daisuki"
   },
   {
     "jp": "すてき",
     "zh": "很棒",
     "id": 126,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "suteki"
   },
   {
     "jp": "おみやげ",
     "zh": "紀念品",
     "id": 127,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "omiyage"
   },
   {
     "jp": "ポストカード",
     "zh": "明信片",
     "id": 128,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "posutokaado"
   },
   {
     "jp": "おかし",
     "zh": "零食",
     "id": 129,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "okashi"
   },
   {
     "jp": "じんじゃ",
     "zh": "神社",
     "id": 130,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "jinja"
   },
   {
     "jp": "はな",
     "zh": "花",
     "id": 131,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hana"
   },
   {
     "jp": "ふじさん",
     "zh": "富士山",
     "id": 132,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "fujisan"
   },
   {
     "jp": "山",
     "zh": "堆，山，一堆",
     "id": 133,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yama"
   },
   {
     "jp": "高い",
     "zh": "高的，高高",
     "id": 134,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "takai"
   },
   {
     "jp": "ピザや",
     "zh": "披薩店",
     "id": 135,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "pizaya"
   },
   {
     "jp": "ラーメンや",
     "zh": "拉麪店",
     "id": 136,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "raamenya"
   },
   {
     "jp": "ゆうめい",
     "zh": "有名",
     "id": 137,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yuumei"
   },
   {
     "jp": "はらじゅく",
     "zh": "原宿",
     "id": 138,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "harajuku"
   },
   {
     "jp": "デザート",
     "zh": "甜點",
     "id": 139,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "dezaato"
   },
   {
     "jp": "あれ",
     "zh": "那",
     "id": 140,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "are"
   },
   {
     "jp": "おてら",
     "zh": "寺廟",
     "id": 141,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "otera"
   },
   {
     "jp": "何ですか",
     "zh": "是什麼",
     "id": 142,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nan desu ka"
   },
   {
     "jp": "たてもの",
     "zh": "建築",
     "id": 143,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tatemono"
   },
   {
     "jp": "な",
     "zh": "的",
     "id": 144,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "na"
   },
   {
     "jp": "ほんとうに",
     "zh": "真的是",
     "id": 145,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hontouni"
   },
   {
     "jp": "ところ",
     "zh": "地方",
     "id": 146,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tokoro"
   },
   {
     "jp": "きょう",
     "zh": "今天",
     "id": 147,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kyou"
   },
   {
     "jp": "ちゃんと",
     "zh": "好好",
     "id": 148,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chanto"
   },
   {
     "jp": "休みます",
     "zh": "請假",
     "id": 149,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yasumimasu"
   },
   {
     "jp": "さい",
     "zh": "歲",
     "id": 150,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sai"
   },
   {
     "jp": "ごりょうしん",
     "zh": "你的父母",
     "id": 151,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "goryoushin"
   },
   {
     "jp": "ちかく",
     "zh": "附近",
     "id": 152,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chikaku"
   },
   {
     "jp": "アレルギー",
     "zh": "過敏",
     "id": 153,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "arerugii"
   },
   {
     "jp": "何さい",
     "zh": "幾歲",
     "id": 154,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nanisai"
   },
   {
     "jp": "〇",
     "zh": "零",
     "id": 155,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "zero"
   },
   {
     "jp": "でんわばんごう",
     "zh": "電話號碼",
     "id": 156,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "denwabangou"
   },
   {
     "jp": "九",
     "zh": "九",
     "id": 157,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kyuu"
   },
   {
     "jp": "けいさつ",
     "zh": "警察",
     "id": 158,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "keisatsu"
   },
   {
     "jp": "おねがいします",
     "zh": "請",
     "id": 159,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "onegaishimasu"
   },
   {
     "jp": "ごかぞく",
     "zh": "你的家人",
     "id": 160,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "gokazoku"
   },
   {
     "jp": "びょういん",
     "zh": "醫院",
     "id": 161,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "byouin"
   },
   {
     "jp": "きゅうきゅうしゃ",
     "zh": "救護車",
     "id": 162,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kyuukyuusha"
   },
   {
     "jp": "そこ",
     "zh": "那裏",
     "id": 163,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "soko"
   },
   {
     "jp": "だいじょうぶ",
     "zh": "沒事",
     "id": 164,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "daijoubu"
   },
   {
     "jp": "ぐあいがわるい",
     "zh": "不舒服",
     "id": 165,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "guaigawarui"
   },
   {
     "jp": "すわります",
     "zh": "坐，坐下",
     "id": 166,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "suwarimasu"
   },
   {
     "jp": "あぶない",
     "zh": "危險",
     "id": 167,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "abunai"
   },
   {
     "jp": "おこさん",
     "zh": "你的孩子",
     "id": 168,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "okosan"
   },
   {
     "jp": "こども",
     "zh": "孩子",
     "id": 169,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kodomo"
   },
   {
     "jp": "一人",
     "zh": "一個人",
     "id": 170,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hitori"
   },
   {
     "jp": "かんこくご",
     "zh": "韓語",
     "id": 171,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kankokugo"
   },
   {
     "jp": "ソウル",
     "zh": "首爾",
     "id": 172,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "souru"
   },
   {
     "jp": "います",
     "zh": "在",
     "id": 173,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "imasu"
   },
   {
     "jp": "二人",
     "zh": "兩個人",
     "id": 174,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "futari"
   },
   {
     "jp": "おにいさん",
     "zh": "你哥哥",
     "id": 175,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "oniisan"
   },
   {
     "jp": "インドネシア",
     "zh": "印度尼西亞",
     "id": 176,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "indoneshia"
   },
   {
     "jp": "えいご",
     "zh": "英語",
     "id": 177,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "eigo"
   },
   {
     "jp": "ちゅうごくご",
     "zh": "中文",
     "id": 178,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chuugokugo"
   },
   {
     "jp": "いもうと",
     "zh": "我妹妹",
     "id": 179,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "imouto"
   },
   {
     "jp": "たいわん",
     "zh": "臺灣",
     "id": 180,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "taiwan"
   },
   {
     "jp": "いもうとさん",
     "zh": "你妹妹",
     "id": 181,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "imoutosan"
   },
   {
     "jp": "ができます",
     "zh": "會",
     "id": 182,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ga dekimasu"
   },
   {
     "jp": "日本ご",
     "zh": "日語",
     "id": 183,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nihongo"
   },
   {
     "jp": "オーストラリア",
     "zh": "澳大利亞",
     "id": 184,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "oosutoraria"
   },
   {
     "jp": "コーチ",
     "zh": "教練",
     "id": 185,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "koochi"
   },
   {
     "jp": "おとうと",
     "zh": "我弟弟",
     "id": 186,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "otouto"
   },
   {
     "jp": "おとうとさん",
     "zh": "你弟弟",
     "id": 187,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "otoutosan"
   },
   {
     "jp": "はいますか",
     "zh": "有嗎",
     "id": 188,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "wa imasu ka"
   },
   {
     "jp": "おねえさん",
     "zh": "你姐姐",
     "id": 189,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "oneesan"
   },
   {
     "jp": "きょうだい",
     "zh": "兄弟姐妹",
     "id": 190,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kyoudai"
   },
   {
     "jp": "れいぞうこ",
     "zh": "冰箱",
     "id": 191,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "reizouko"
   },
   {
     "jp": "いつ",
     "zh": "什麼時候",
     "id": 192,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "itsu"
   },
   {
     "jp": "つくえ",
     "zh": "書桌",
     "id": 193,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tsukue"
   },
   {
     "jp": "九時",
     "zh": "九點",
     "id": 194,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kuji"
   },
   {
     "jp": "せんたくき",
     "zh": "洗衣機",
     "id": 195,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sentakuki"
   },
   {
     "jp": "こんしゅう",
     "zh": "這周",
     "id": 196,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "konshuu"
   },
   {
     "jp": "テーブル",
     "zh": "桌子",
     "id": 197,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "teeburu"
   },
   {
     "jp": "たぶん",
     "zh": "可能",
     "id": 198,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tabun"
   },
   {
     "jp": "ふとん",
     "zh": "被褥",
     "id": 199,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "futon"
   },
   {
     "jp": "いす",
     "zh": "椅子",
     "id": 200,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "isu"
   },
   {
     "jp": "でんしレンジ",
     "zh": "微波爐",
     "id": 201,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "denshi renji"
   },
   {
     "jp": "エアコン",
     "zh": "空調",
     "id": 202,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "eakon"
   },
   {
     "jp": "そうじき",
     "zh": "吸塵器",
     "id": 203,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "soujiki"
   },
   {
     "jp": "ベッド",
     "zh": "牀",
     "id": 204,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "beddo"
   },
   {
     "jp": "まだ",
     "zh": "還沒",
     "id": 205,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mada"
   },
   {
     "jp": "おふろ",
     "zh": "浴室",
     "id": 206,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ofuro"
   },
   {
     "jp": "ほんだな",
     "zh": "書架",
     "id": 207,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hondana"
   },
   {
     "jp": "リビング",
     "zh": "客廳",
     "id": 208,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ribingu"
   },
   {
     "jp": "キッチン",
     "zh": "廚房",
     "id": 209,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kitchin"
   },
   {
     "jp": "があります",
     "zh": "有",
     "id": 210,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ga arimasu"
   },
   {
     "jp": "せまい",
     "zh": "狹窄",
     "id": 211,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "semai"
   },
   {
     "jp": "いい",
     "zh": "好的",
     "id": 212,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ii"
   },
   {
     "jp": "いえ",
     "zh": "房子",
     "id": 213,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ie"
   },
   {
     "jp": "アパート",
     "zh": "公寓",
     "id": 214,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "apaato"
   },
   {
     "jp": "ひっこします",
     "zh": "搬家",
     "id": 215,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hikkoshimasu"
   },
   {
     "jp": "ひろい",
     "zh": "寬敞",
     "id": 216,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hiroi"
   },
   {
     "jp": "でぐち",
     "zh": "出口",
     "id": 217,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "deguchi"
   },
   {
     "jp": "コインロッカー",
     "zh": "儲物櫃",
     "id": 218,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "koinrokkaa"
   },
   {
     "jp": "じはんき",
     "zh": "自動販賣機",
     "id": 219,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "jihanki"
   },
   {
     "jp": "カフェ",
     "zh": "咖啡廳",
     "id": 220,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kafe"
   },
   {
     "jp": "ちかい",
     "zh": "近",
     "id": 221,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chikai"
   },
   {
     "jp": "二階",
     "zh": "二樓",
     "id": 222,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nikai"
   },
   {
     "jp": "でんわ",
     "zh": "電話",
     "id": 223,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "denwa"
   },
   {
     "jp": "コンセント",
     "zh": "插座",
     "id": 224,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "konsento"
   },
   {
     "jp": "かいだん",
     "zh": "樓梯",
     "id": 225,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kaidan"
   },
   {
     "jp": "とおい",
     "zh": "遠",
     "id": 226,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tooi"
   },
   {
     "jp": "ちか",
     "zh": "地下",
     "id": 227,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chika"
   },
   {
     "jp": "おてあらい",
     "zh": "衛生間",
     "id": 228,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "otearai"
   },
   {
     "jp": "エレベーター",
     "zh": "電梯",
     "id": 229,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "erebeetaa"
   },
   {
     "jp": "タクシー",
     "zh": "出租車",
     "id": 230,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "takushii"
   },
   {
     "jp": "WiFi",
     "zh": "無線網絡",
     "id": 231,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "Wi-Fi"
   },
   {
     "jp": "のりかえ",
     "zh": "換乘",
     "id": 232,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "norikae"
   },
   {
     "jp": "ゴミばこ",
     "zh": "垃圾桶",
     "id": 233,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "gomibako"
   },
   {
     "jp": "ATM",
     "zh": "自動取款機",
     "id": 234,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ATM"
   },
   {
     "jp": "ホーム",
     "zh": "站臺",
     "id": 235,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hoomu"
   },
   {
     "jp": "かいさつ",
     "zh": "檢票口",
     "id": 236,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kaisatsu"
   },
   {
     "jp": "一階",
     "zh": "一樓",
     "id": 237,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ikkai"
   },
   {
     "jp": "七つ",
     "zh": "七個",
     "id": 238,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nanatsu"
   },
   {
     "jp": "パイ",
     "zh": "派",
     "id": 239,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "pai"
   },
   {
     "jp": "チョコレート",
     "zh": "巧克力",
     "id": 240,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chokoreeto"
   },
   {
     "jp": "ぜんぶで",
     "zh": "總共",
     "id": 241,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "zenbude"
   },
   {
     "jp": "いちご",
     "zh": "草莓",
     "id": 242,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ichigo"
   },
   {
     "jp": "六つ",
     "zh": "六個",
     "id": 243,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mutsu"
   },
   {
     "jp": "クッキー",
     "zh": "餅乾",
     "id": 244,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kukkii"
   },
   {
     "jp": "どの",
     "zh": "哪種",
     "id": 245,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "dono"
   },
   {
     "jp": "まっちゃ",
     "zh": "抹茶",
     "id": 246,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "matcha"
   },
   {
     "jp": "カップケーキ",
     "zh": "杯子蛋糕",
     "id": 247,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kappukeeki"
   },
   {
     "jp": "みどり",
     "zh": "綠色",
     "id": 248,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "midori"
   },
   {
     "jp": "五つ",
     "zh": "五個",
     "id": 249,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "itsutsu"
   },
   {
     "jp": "ドーナツ",
     "zh": "甜甜圈",
     "id": 250,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "doonatsu"
   },
   {
     "jp": "チーズケーキ",
     "zh": "芝士蛋糕",
     "id": 251,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chiizukeeki"
   },
   {
     "jp": "あの",
     "zh": "那家，那起",
     "id": 252,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ano"
   },
   {
     "jp": "もの",
     "zh": "東西",
     "id": 253,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mono"
   },
   {
     "jp": "どうですか",
     "zh": "怎麼樣",
     "id": 254,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "doudesuka"
   },
   {
     "jp": "ケーキや",
     "zh": "蛋糕店",
     "id": 255,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "keekiya"
   },
   {
     "jp": "はすきですか",
     "zh": "喜歡嗎",
     "id": 256,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "wa suki desu ka"
   },
   {
     "jp": "あまい",
     "zh": "甜",
     "id": 257,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "amai"
   },
   {
     "jp": "すこし",
     "zh": "稍微",
     "id": 258,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sukoshi"
   },
   {
     "jp": "アイスコーヒー",
     "zh": "冰咖啡",
     "id": 259,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "aisukoohii"
   },
   {
     "jp": "アイスクリーム",
     "zh": "冰淇淋",
     "id": 260,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "aisukuriimu"
   },
   {
     "jp": "こうちゃ",
     "zh": "紅茶",
     "id": 261,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "koucha"
   },
   {
     "jp": "小さい",
     "zh": "小",
     "id": 262,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chiisai"
   },
   {
     "jp": "みそしる",
     "zh": "味噌湯",
     "id": 263,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "misoshiru"
   },
   {
     "jp": "そば",
     "zh": "蕎麥麪",
     "id": 264,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "soba"
   },
   {
     "jp": "大きい",
     "zh": "大的，大",
     "id": 265,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ookii"
   },
   {
     "jp": "おにぎり",
     "zh": "飯糰",
     "id": 266,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "onigiri"
   },
   {
     "jp": "その",
     "zh": "那個，那家，那",
     "id": 267,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sono"
   },
   {
     "jp": "三つ",
     "zh": "三個",
     "id": 268,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mittsu"
   },
   {
     "jp": "四つ",
     "zh": "四個",
     "id": 269,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yotsu"
   },
   {
     "jp": "じゃあ",
     "zh": "那麼",
     "id": 270,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "jaa"
   },
   {
     "jp": "一つ",
     "zh": "一個",
     "id": 271,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hitotsu"
   },
   {
     "jp": "水",
     "zh": "水，三",
     "id": 272,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mizu"
   },
   {
     "jp": "二つ",
     "zh": "兩個",
     "id": 273,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "futatsu"
   },
   {
     "jp": "てんぷら",
     "zh": "天婦羅",
     "id": 274,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tenpura"
   },
   {
     "jp": "ええと",
     "zh": "嗯",
     "id": 275,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "eeto"
   },
   {
     "jp": "レストラン",
     "zh": "餐廳",
     "id": 276,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "resutoran"
   },
   {
     "jp": "ていしょく",
     "zh": "套餐",
     "id": 277,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "teishoku"
   },
   {
     "jp": "うどん",
     "zh": "烏冬麪",
     "id": 278,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "udon"
   },
   {
     "jp": "ココア",
     "zh": "可可",
     "id": 279,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kokoa"
   },
   {
     "jp": "おんせん",
     "zh": "溫泉",
     "id": 280,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "onsen"
   },
   {
     "jp": "ふゆ",
     "zh": "冬天",
     "id": 281,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "fuyu"
   },
   {
     "jp": "ゆき",
     "zh": "下雪",
     "id": 282,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yuki"
   },
   {
     "jp": "さむい",
     "zh": "冷",
     "id": 283,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "samui"
   },
   {
     "jp": "あめ",
     "zh": "下雨",
     "id": 284,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ame"
   },
   {
     "jp": "あき",
     "zh": "秋天",
     "id": 285,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "aki"
   },
   {
     "jp": "コンサート",
     "zh": "音樂會",
     "id": 286,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "konsaato"
   },
   {
     "jp": "九月",
     "zh": "九月",
     "id": 287,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kugatsu"
   },
   {
     "jp": "七月",
     "zh": "七月",
     "id": 288,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shichigatsu"
   },
   {
     "jp": "休み",
     "zh": "放假",
     "id": 289,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yasumi"
   },
   {
     "jp": "プール",
     "zh": "游泳池",
     "id": 290,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "puuru"
   },
   {
     "jp": "はなび",
     "zh": "煙花",
     "id": 291,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hanabi"
   },
   {
     "jp": "あつい",
     "zh": "熱",
     "id": 292,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "atsui"
   },
   {
     "jp": "はれ",
     "zh": "晴天",
     "id": 293,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hare"
   },
   {
     "jp": "なつ",
     "zh": "夏天",
     "id": 294,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "natsu"
   },
   {
     "jp": "はる",
     "zh": "春天",
     "id": 295,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "haru"
   },
   {
     "jp": "日",
     "zh": "日子",
     "id": 296,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nichi"
   },
   {
     "jp": "こうえん",
     "zh": "公園",
     "id": 297,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kouen"
   },
   {
     "jp": "あたたかい",
     "zh": "暖和",
     "id": 298,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "atatakai"
   },
   {
     "jp": "あね",
     "zh": "姐姐",
     "id": 299,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ane"
   },
   {
     "jp": "どうが",
     "zh": "視頻",
     "id": 300,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "douga"
   },
   {
     "jp": "日曜日",
     "zh": "星期天",
     "id": 301,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nichiyoubi"
   },
   {
     "jp": "話します",
     "zh": "說",
     "id": 302,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hanashimasu"
   },
   {
     "jp": "あに",
     "zh": "哥哥",
     "id": 303,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ani"
   },
   {
     "jp": "土曜日",
     "zh": "星期六",
     "id": 304,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "doyoubi"
   },
   {
     "jp": "じゅうどう",
     "zh": "柔道",
     "id": 305,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "juudou"
   },
   {
     "jp": "ミステリー",
     "zh": "懸疑",
     "id": 306,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "misuterii"
   },
   {
     "jp": "かぞく",
     "zh": "家人",
     "id": 307,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kazoku"
   },
   {
     "jp": "母",
     "zh": "媽，我媽媽，媽媽",
     "id": 308,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "haha"
   },
   {
     "jp": "スポーツ",
     "zh": "運動",
     "id": 309,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "supootsu"
   },
   {
     "jp": "父",
     "zh": "我的爸爸，我爸爸，爸爸",
     "id": 310,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chichi"
   },
   {
     "jp": "あそびます",
     "zh": "玩",
     "id": 311,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "asobimasu"
   },
   {
     "jp": "れんあい",
     "zh": "愛情",
     "id": 312,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ren'ai"
   },
   {
     "jp": "しゅうまつ",
     "zh": "週末",
     "id": 313,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shuumatsu"
   },
   {
     "jp": "テニス",
     "zh": "網球",
     "id": 314,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tenisu"
   },
   {
     "jp": "ひとりで",
     "zh": "一個人",
     "id": 315,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hitoride"
   },
   {
     "jp": "時間",
     "zh": "小時",
     "id": 316,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "jikan"
   },
   {
     "jp": "しゅうてん",
     "zh": "終點站",
     "id": 317,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shuuten"
   },
   {
     "jp": "ながい",
     "zh": "長",
     "id": 318,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nagai"
   },
   {
     "jp": "分",
     "zh": "分鐘，分錢，分",
     "id": 319,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "fun"
   },
   {
     "jp": "どのぐらい",
     "zh": "多久",
     "id": 320,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "dono gurai"
   },
   {
     "jp": "十分",
     "zh": "十分鐘",
     "id": 321,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "juppun"
   },
   {
     "jp": "ぐらい",
     "zh": "大概",
     "id": 322,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "gurai"
   },
   {
     "jp": "かかります",
     "zh": "花",
     "id": 323,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kakarimasu"
   },
   {
     "jp": "はやい",
     "zh": "快",
     "id": 324,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hayai"
   },
   {
     "jp": "うえのこうえん",
     "zh": "上野公園",
     "id": 325,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "uenokouen"
   },
   {
     "jp": "つぎの",
     "zh": "下一個",
     "id": 326,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tsugino"
   },
   {
     "jp": "もうすぐ",
     "zh": "很快就會",
     "id": 327,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mousugu"
   },
   {
     "jp": "あさくさ",
     "zh": "淺草",
     "id": 328,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "asakusa"
   },
   {
     "jp": "来ます",
     "zh": "來",
     "id": 329,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kimasu"
   },
   {
     "jp": "つぎ",
     "zh": "下一個",
     "id": 330,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tsugi"
   },
   {
     "jp": "バス",
     "zh": "公交車",
     "id": 331,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "basu"
   },
   {
     "jp": "あきはばら",
     "zh": "秋葉原",
     "id": 332,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "akihabara"
   },
   {
     "jp": "でんしゃ",
     "zh": "火車",
     "id": 333,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "densha"
   },
   {
     "jp": "しぶや",
     "zh": "澀谷",
     "id": 334,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shibuya"
   },
   {
     "jp": "行きます",
     "zh": "去",
     "id": 335,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ikimasu"
   },
   {
     "jp": "でかけます",
     "zh": "出去",
     "id": 336,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "dekakemasu"
   },
   {
     "jp": "はしります",
     "zh": "跑步",
     "id": 337,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hashirimasu"
   },
   {
     "jp": "飲みます",
     "zh": "喝",
     "id": 338,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nomimasu"
   },
   {
     "jp": "およぎます",
     "zh": "游泳",
     "id": 339,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "oyogimasu"
   },
   {
     "jp": "十二",
     "zh": "12，十二個",
     "id": 340,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "juuni"
   },
   {
     "jp": "ねます",
     "zh": "睡覺，睡",
     "id": 341,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nemasu"
   },
   {
     "jp": "からて",
     "zh": "空手道",
     "id": 342,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "karate"
   },
   {
     "jp": "ヨガ",
     "zh": "瑜伽",
     "id": 343,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yoga"
   },
   {
     "jp": "らいしゅう",
     "zh": "下週",
     "id": 344,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "raishuu"
   },
   {
     "jp": "あした",
     "zh": "明天",
     "id": 345,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ashita"
   },
   {
     "jp": "買います",
     "zh": "買",
     "id": 346,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kaimasu"
   },
   {
     "jp": "まいしゅう",
     "zh": "每週",
     "id": 347,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "maishuu"
   },
   {
     "jp": "十一",
     "zh": "11，十一",
     "id": 348,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "juuichi"
   },
   {
     "jp": "ごろ",
     "zh": "左右",
     "id": 349,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "goro"
   },
   {
     "jp": "バレーボール",
     "zh": "排球",
     "id": 350,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "bareebooru"
   },
   {
     "jp": "十",
     "zh": "十",
     "id": 351,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "juu"
   },
   {
     "jp": "つくります",
     "zh": "做",
     "id": 352,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tsukurimasu"
   },
   {
     "jp": "何時",
     "zh": "幾點",
     "id": 353,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nanji"
   },
   {
     "jp": "いつも",
     "zh": "總是",
     "id": 354,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "itsumo"
   },
   {
     "jp": "ラジオ",
     "zh": "收音機",
     "id": 355,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "rajio"
   },
   {
     "jp": "食べます",
     "zh": "喫",
     "id": 356,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tabemasu"
   },
   {
     "jp": "おきます",
     "zh": "起牀",
     "id": 357,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "okimasu"
   },
   {
     "jp": "ゲーム",
     "zh": "電子遊戲",
     "id": 358,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "geemu"
   },
   {
     "jp": "コメディ",
     "zh": "喜劇",
     "id": 359,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "komedi"
   },
   {
     "jp": "アクション",
     "zh": "動作",
     "id": 360,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "akushon"
   },
   {
     "jp": "どんな",
     "zh": "什麼樣的",
     "id": 361,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "donna"
   },
   {
     "jp": "ホラー",
     "zh": "恐怖",
     "id": 362,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "horaa"
   },
   {
     "jp": "ドラマ",
     "zh": "電視劇",
     "id": 363,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "dorama"
   },
   {
     "jp": "アメリカの",
     "zh": "美國的",
     "id": 364,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "amerika no"
   },
   {
     "jp": "日本の",
     "zh": "日本的",
     "id": 365,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nihon no"
   },
   {
     "jp": "ファンタジー",
     "zh": "奇幻",
     "id": 366,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "fantajii"
   },
   {
     "jp": "すき",
     "zh": "喜歡",
     "id": 367,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "suki"
   },
   {
     "jp": "Kポップ",
     "zh": "韓國流行音樂",
     "id": 368,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "K-poppu"
   },
   {
     "jp": "かのじょ",
     "zh": "女朋友",
     "id": 369,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kanojo"
   },
   {
     "jp": "さんは",
     "zh": "先生是，先生爲，先生作爲",
     "id": 370,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "san wa"
   },
   {
     "jp": "かんこく",
     "zh": "韓國",
     "id": 371,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kankoku"
   },
   {
     "jp": "ちゅうごく",
     "zh": "中國",
     "id": 372,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chuugoku"
   },
   {
     "jp": "イギリス",
     "zh": "英國",
     "id": 373,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "igirisu"
   },
   {
     "jp": "かれし",
     "zh": "男朋友",
     "id": 374,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kareshi"
   },
   {
     "jp": "こちら",
     "zh": "這位",
     "id": 375,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kochira"
   },
   {
     "jp": "と言います",
     "zh": "叫",
     "id": 376,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "to iimasu"
   },
   {
     "jp": "たかい",
     "zh": "貴",
     "id": 377,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "takai"
   },
   {
     "jp": "みせ",
     "zh": "店",
     "id": 378,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mise"
   },
   {
     "jp": "ジャケット",
     "zh": "夾克",
     "id": 379,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "jaketto"
   },
   {
     "jp": "ありがとうございます",
     "zh": "謝謝您",
     "id": 380,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "arigatou gozaimasu"
   },
   {
     "jp": "くろい",
     "zh": "黑色的",
     "id": 381,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kuroi"
   },
   {
     "jp": "千",
     "zh": "千",
     "id": 382,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sen"
   },
   {
     "jp": "えん",
     "zh": "日元",
     "id": 383,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "en"
   },
   {
     "jp": "ネクタイ",
     "zh": "領帶",
     "id": 384,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nekutai"
   },
   {
     "jp": "いくら",
     "zh": "多少錢",
     "id": 385,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ikura"
   },
   {
     "jp": "百",
     "zh": "百",
     "id": 386,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hyaku"
   },
   {
     "jp": "やすい",
     "zh": "便宜",
     "id": 387,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yasui"
   },
   {
     "jp": "スカート",
     "zh": "裙子",
     "id": 388,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sukaato"
   },
   {
     "jp": "ね",
     "zh": "啊",
     "id": 389,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ne"
   },
   {
     "jp": "かわいい",
     "zh": "可愛",
     "id": 390,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kawaii"
   },
   {
     "jp": "あおい",
     "zh": "藍色的",
     "id": 391,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "aoi"
   },
   {
     "jp": "Tシャツ",
     "zh": "T恤",
     "id": 392,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "T-shatsu"
   },
   {
     "jp": "が",
     "zh": "但是，雖然，是",
     "id": 393,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ga"
   },
   {
     "jp": "新しい",
     "zh": "新",
     "id": 394,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "atarashii"
   },
   {
     "jp": "ほしい",
     "zh": "想要",
     "id": 395,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hoshii"
   },
   {
     "jp": "さいふ",
     "zh": "錢包",
     "id": 396,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "saifu"
   },
   {
     "jp": "ふく",
     "zh": "衣服",
     "id": 397,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "fuku"
   },
   {
     "jp": "この",
     "zh": "這雙，這件，這家",
     "id": 398,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kono"
   },
   {
     "jp": "はちょっと",
     "zh": "有點",
     "id": 399,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "wa chotto"
   },
   {
     "jp": "古い",
     "zh": "舊",
     "id": 400,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "furui"
   },
   {
     "jp": "カレー",
     "zh": "咖哩",
     "id": 401,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "karee"
   },
   {
     "jp": "五",
     "zh": "5，五",
     "id": 402,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "go"
   },
   {
     "jp": "ばんごはん",
     "zh": "晚飯",
     "id": 403,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "bangohan"
   },
   {
     "jp": "まいばん",
     "zh": "每天晚上",
     "id": 404,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "maiban"
   },
   {
     "jp": "八",
     "zh": "八",
     "id": 405,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hachi"
   },
   {
     "jp": "ひるごはん",
     "zh": "午飯",
     "id": 406,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hirugohan"
   },
   {
     "jp": "パスタ",
     "zh": "意大利麪",
     "id": 407,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "pasuta"
   },
   {
     "jp": "四時",
     "zh": "四點",
     "id": 408,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yoji"
   },
   {
     "jp": "べんとう",
     "zh": "便當",
     "id": 409,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "bentou"
   },
   {
     "jp": "七時",
     "zh": "七點",
     "id": 410,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shichiji"
   },
   {
     "jp": "ジュース",
     "zh": "果汁",
     "id": 411,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "juusu"
   },
   {
     "jp": "コーヒー",
     "zh": "咖啡",
     "id": 412,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "koohii"
   },
   {
     "jp": "のみます",
     "zh": "喝",
     "id": 413,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nomimasu"
   },
   {
     "jp": "まいあさ",
     "zh": "每天早上",
     "id": 414,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "maiasa"
   },
   {
     "jp": "六",
     "zh": "六，6",
     "id": 415,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "roku"
   },
   {
     "jp": "時",
     "zh": "的時候，點，候",
     "id": 416,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "toki"
   },
   {
     "jp": "あさごはん",
     "zh": "早飯",
     "id": 417,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "asagohan"
   },
   {
     "jp": "サンドイッチ",
     "zh": "三明治",
     "id": 418,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sandoitchi"
   },
   {
     "jp": "まいにち",
     "zh": "每天",
     "id": 419,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mainichi"
   },
   {
     "jp": "パン",
     "zh": "麪包",
     "id": 420,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "pan"
   },
   {
     "jp": "たべます",
     "zh": "喫",
     "id": 421,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tabemasu"
   },
   {
     "jp": "まんが",
     "zh": "漫畫",
     "id": 422,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "manga"
   },
   {
     "jp": "やきゅう",
     "zh": "棒球",
     "id": 423,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yakyuu"
   },
   {
     "jp": "Jポップ",
     "zh": "日本流行音樂",
     "id": 424,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "J-poppu"
   },
   {
     "jp": "アニメ",
     "zh": "動漫",
     "id": 425,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "anime"
   },
   {
     "jp": "ニュース",
     "zh": "新聞",
     "id": 426,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nyuusu"
   },
   {
     "jp": "本",
     "zh": "書",
     "id": 427,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hon"
   },
   {
     "jp": "ときどき",
     "zh": "有時候",
     "id": 428,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tokidoki"
   },
   {
     "jp": "ざっし",
     "zh": "雜誌",
     "id": 429,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "zasshi"
   },
   {
     "jp": "読みます",
     "zh": "讀",
     "id": 430,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yomimasu"
   },
   {
     "jp": "おんがく",
     "zh": "音樂",
     "id": 431,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ongaku"
   },
   {
     "jp": "よく",
     "zh": "經常",
     "id": 432,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yoku"
   },
   {
     "jp": "ジャズ",
     "zh": "爵士樂",
     "id": 433,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "jazu"
   },
   {
     "jp": "ロック",
     "zh": "搖滾樂",
     "id": 434,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "rokku"
   },
   {
     "jp": "ききます",
     "zh": "聽",
     "id": 435,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kikimasu"
   },
   {
     "jp": "サッカー",
     "zh": "足球",
     "id": 436,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sakkaa"
   },
   {
     "jp": "バスケットボール",
     "zh": "籃球",
     "id": 437,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "basukettobooru"
   },
   {
     "jp": "します",
     "zh": "做",
     "id": 438,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shimasu"
   },
   {
     "jp": "テレビ",
     "zh": "電視",
     "id": 439,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "terebi"
   },
   {
     "jp": "を",
     "zh": "從，把，在",
     "id": 440,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "wo"
   },
   {
     "jp": "えいが",
     "zh": "電影",
     "id": 441,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "eiga"
   },
   {
     "jp": "見ます",
     "zh": "看",
     "id": 442,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mimasu"
   },
   {
     "jp": "しずか",
     "zh": "安靜",
     "id": 443,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shizuka"
   },
   {
     "jp": "きれい",
     "zh": "乾淨",
     "id": 444,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kirei"
   },
   {
     "jp": "まち",
     "zh": "城鎮",
     "id": 445,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "machi"
   },
   {
     "jp": "とても",
     "zh": "非常",
     "id": 446,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "totemo"
   },
   {
     "jp": "とし",
     "zh": "城市",
     "id": 447,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "toshi"
   },
   {
     "jp": "にぎやか",
     "zh": "熱鬧",
     "id": 448,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nigiyaka"
   },
   {
     "jp": "日本",
     "zh": "日本",
     "id": 449,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nihon"
   },
   {
     "jp": "どう",
     "zh": "怎麼樣",
     "id": 450,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "dou"
   },
   {
     "jp": "おおさか",
     "zh": "大阪",
     "id": 451,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "oosaka"
   },
   {
     "jp": "も",
     "zh": "都，還，就算",
     "id": 452,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mo"
   },
   {
     "jp": "にすんでいます",
     "zh": "住在",
     "id": 453,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ni sunde imasu"
   },
   {
     "jp": "私",
     "zh": "我",
     "id": 454,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "watashi"
   },
   {
     "jp": "トロント",
     "zh": "多倫多",
     "id": 455,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "toronto"
   },
   {
     "jp": "京都",
     "zh": "京都",
     "id": 456,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kyouto"
   },
   {
     "jp": "ニューヨーク",
     "zh": "紐約",
     "id": 457,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nyuuyooku"
   },
   {
     "jp": "しゅっしん",
     "zh": "來自",
     "id": 458,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shusshin"
   },
   {
     "jp": "はじめまして",
     "zh": "很高興認識你",
     "id": 459,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hajimemashite"
   },
   {
     "jp": "東京",
     "zh": "東京",
     "id": 460,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "toukyou"
   },
   {
     "jp": "おなまえは",
     "zh": "你的名字是",
     "id": 461,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "onamae wa"
   },
   {
     "jp": "それ",
     "zh": "那",
     "id": 462,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sore"
   },
   {
     "jp": "パスポート",
     "zh": "護照",
     "id": 463,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "pasupooto"
   },
   {
     "jp": "ぼうし",
     "zh": "帽子",
     "id": 464,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "boushi"
   },
   {
     "jp": "スマホ",
     "zh": "手機",
     "id": 465,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sumaho"
   },
   {
     "jp": "ちず",
     "zh": "地圖",
     "id": 466,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chizu"
   },
   {
     "jp": "きっぷ",
     "zh": "票",
     "id": 467,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kippu"
   },
   {
     "jp": "かさ",
     "zh": "傘",
     "id": 468,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kasa"
   },
   {
     "jp": "あそこ",
     "zh": "那裏",
     "id": 469,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "asoko"
   },
   {
     "jp": "ちかてつ",
     "zh": "地鐵",
     "id": 470,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chikatetsu"
   },
   {
     "jp": "くうこう",
     "zh": "機場",
     "id": 471,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kuukou"
   },
   {
     "jp": "三",
     "zh": "傘，三",
     "id": 472,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "san"
   },
   {
     "jp": "すみません",
     "zh": "對不起",
     "id": 473,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sumimasen"
   },
   {
     "jp": "はん",
     "zh": "半",
     "id": 474,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "han"
   },
   {
     "jp": "なんじ",
     "zh": "幾點",
     "id": 475,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nanji"
   },
   {
     "jp": "一",
     "zh": "一，1",
     "id": 476,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ichi"
   },
   {
     "jp": "二",
     "zh": "二，兩，兩",
     "id": 477,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ni"
   },
   {
     "jp": "いま",
     "zh": "現在",
     "id": 478,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ima"
   },
   {
     "jp": "に",
     "zh": "二",
     "id": 479,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ni"
   },
   {
     "jp": "じ",
     "zh": "字",
     "id": 480,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ji"
   },
   {
     "jp": "いち",
     "zh": "一",
     "id": 481,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ichi"
   },
   {
     "jp": "おもしろい",
     "zh": "有趣",
     "id": 482,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "omoshiroi"
   },
   {
     "jp": "ともだち",
     "zh": "朋友",
     "id": 483,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tomodachi"
   },
   {
     "jp": "あかるい",
     "zh": "明亮",
     "id": 484,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "akarui"
   },
   {
     "jp": "くつ",
     "zh": "鞋",
     "id": 485,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kutsu"
   },
   {
     "jp": "の",
     "zh": "呢，嗎，之",
     "id": 486,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "no"
   },
   {
     "jp": "てぶくろ",
     "zh": "手套",
     "id": 487,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "tebukuro"
   },
   {
     "jp": "しろい",
     "zh": "白色的",
     "id": 488,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "shiroi"
   },
   {
     "jp": "かばん",
     "zh": "包",
     "id": 489,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kaban"
   },
   {
     "jp": "わたしの",
     "zh": "我的",
     "id": 490,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "watashino"
   },
   {
     "jp": "コート",
     "zh": "外套",
     "id": 491,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kooto"
   },
   {
     "jp": "あかい",
     "zh": "紅色的",
     "id": 492,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "akai"
   },
   {
     "jp": "いいえ",
     "zh": "不是",
     "id": 493,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "iie"
   },
   {
     "jp": "だいがく",
     "zh": "大學",
     "id": 494,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "daigaku"
   },
   {
     "jp": "えき",
     "zh": "車站",
     "id": 495,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "eki"
   },
   {
     "jp": "デパート",
     "zh": "百貨商店",
     "id": 496,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "depaato"
   },
   {
     "jp": "じゃない",
     "zh": "不是",
     "id": 497,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "janai"
   },
   {
     "jp": "ここ",
     "zh": "這裏",
     "id": 498,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "koko"
   },
   {
     "jp": "バスてい",
     "zh": "公交站",
     "id": 499,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "basutei"
   },
   {
     "jp": "コンビニ",
     "zh": "便利店",
     "id": 500,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "konbini"
   },
   {
     "jp": "どこ",
     "zh": "哪裏",
     "id": 501,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "doko"
   },
   {
     "jp": "ホテル",
     "zh": "酒店",
     "id": 502,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hoteru"
   },
   {
     "jp": "ブラジルじん",
     "zh": "巴西人",
     "id": 503,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "burajirujin"
   },
   {
     "jp": "ちいさい",
     "zh": "小",
     "id": 504,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "chiisai"
   },
   {
     "jp": "ブラジル",
     "zh": "巴西",
     "id": 505,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "burajiru"
   },
   {
     "jp": "ベトナム",
     "zh": "越南",
     "id": 506,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "betonamu"
   },
   {
     "jp": "ベトナムじん",
     "zh": "越南人",
     "id": 507,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "betonamujin"
   },
   {
     "jp": "アメリカじん",
     "zh": "美國人",
     "id": 508,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "amerikajin"
   },
   {
     "jp": "カナダ",
     "zh": "加拿大",
     "id": 509,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kanada"
   },
   {
     "jp": "カナダじん",
     "zh": "加拿大人",
     "id": 510,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kanadajin"
   },
   {
     "jp": "にほんじん",
     "zh": "日本人",
     "id": 511,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nihonjin"
   },
   {
     "jp": "おおきい",
     "zh": "大",
     "id": 512,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ookii"
   },
   {
     "jp": "にほん",
     "zh": "日本",
     "id": 513,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "nihon"
   },
   {
     "jp": "アメリカ",
     "zh": "美國人，美國的",
     "id": 514,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "amerika"
   },
   {
     "jp": "ケーキ",
     "zh": "蛋糕",
     "id": 515,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "keeki"
   },
   {
     "jp": "か",
     "zh": "嗎",
     "id": 516,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ka"
   },
   {
     "jp": "ピザ",
     "zh": "披薩",
     "id": 517,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "piza"
   },
   {
     "jp": "はい",
     "zh": "是的",
     "id": 518,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hai"
   },
   {
     "jp": "おいしい",
     "zh": "好喫",
     "id": 519,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "oishii"
   },
   {
     "jp": "サラダ",
     "zh": "沙拉",
     "id": 520,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sarada"
   },
   {
     "jp": "ラーメン",
     "zh": "拉麪",
     "id": 521,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "raamen"
   },
   {
     "jp": "これ",
     "zh": "這，這個",
     "id": 522,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kore"
   },
   {
     "jp": "は",
     "zh": "有，呢，是",
     "id": 523,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "wa"
   },
   {
     "jp": "またあした",
     "zh": "明天見",
     "id": 524,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mataashita"
   },
   {
     "jp": "こんばんは",
     "zh": "晚上好",
     "id": 525,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "konbanwa"
   },
   {
     "jp": "さん",
     "zh": "小姐，先生",
     "id": 526,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "san"
   },
   {
     "jp": "こんにちは",
     "zh": "你好",
     "id": 527,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "konnichiwa"
   },
   {
     "jp": "がくせい",
     "zh": "學生",
     "id": 528,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "gakusei"
   },
   {
     "jp": "ひと",
     "zh": "人",
     "id": 529,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "hito"
   },
   {
     "jp": "べんごし",
     "zh": "律師",
     "id": 530,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "bengoshi"
   },
   {
     "jp": "せんせい",
     "zh": "老師",
     "id": 531,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sensei"
   },
   {
     "jp": "かっこいい",
     "zh": "酷",
     "id": 532,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kakkoii"
   },
   {
     "jp": "いしゃ",
     "zh": "醫生",
     "id": 533,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "isha"
   },
   {
     "jp": "やさしい",
     "zh": "溫柔",
     "id": 534,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "yasashii"
   },
   {
     "jp": "です",
     "zh": "是",
     "id": 535,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "desu"
   },
   {
     "jp": "ごはん",
     "zh": "飯",
     "id": 536,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "gohan"
   },
   {
     "jp": "と",
     "zh": "要是的話，和，如果",
     "id": 537,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "to"
   },
   {
     "jp": "ください",
     "zh": "請",
     "id": 538,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "kudasai"
   },
   {
     "jp": "おちゃ",
     "zh": "茶",
     "id": 539,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "ocha"
   },
   {
     "jp": "みず",
     "zh": "水",
     "id": 540,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "mizu"
   },
   {
     "jp": "すし",
     "zh": "壽司",
     "id": 541,
-    "added_at": "2026-10-16"
+    "added_at": "2026-10-16",
+    "romaji": "sushi"
   }
 ]
