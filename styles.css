@@ -537,7 +537,7 @@ body {
 
 .flash-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.6rem;
   margin-bottom: 0.75rem;
 }
@@ -550,7 +550,7 @@ body {
 
 .nav-controls {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
 }
 
@@ -652,6 +652,13 @@ body {
   box-shadow: inset 0 0 0 1px rgba(110, 168, 255, 0.15);
 }
 
+.flash-controls .btn-focus {
+  width: 100%;
+  justify-content: center;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+}
+
 .btn-focus {
   background: rgba(240, 180, 90, 0.1);
   color: var(--warn);
@@ -667,10 +674,6 @@ body {
   color: #ffd28a;
   border-color: rgba(240, 180, 90, 0.55);
   box-shadow: 0 0 0 1px rgba(240, 180, 90, 0.2);
-}
-
-.flash-controls {
-  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .flash-empty {
@@ -792,10 +795,15 @@ body {
   50% { opacity: 0.45; transform: scale(0.85); }
 }
 
-body.autoplaying .nav-controls,
-body.autoplaying .flash-controls {
+body.autoplaying .nav-controls {
   opacity: 0.45;
   pointer-events: none;
+}
+
+/* Keep 重點關注 tappable during autoplay */
+body.autoplaying .flash-controls {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 body.autoplaying #btn-autoplay {

@@ -24,8 +24,6 @@
     cardZh: document.getElementById("card-zh"),
     cardSpeak: document.getElementById("card-speak"),
     btnFocus: document.getElementById("btn-focus"),
-    btnKnown: document.getElementById("btn-known"),
-    btnAgain: document.getElementById("btn-again"),
     btnPrev: document.getElementById("btn-prev"),
     btnNext: document.getElementById("btn-next"),
     btnShuffle: document.getElementById("btn-shuffle"),
@@ -103,14 +101,6 @@
     updateKnownStats();
     renderList();
     updateDetailKnownBtn();
-  }
-
-  function markKnown(id, known) {
-    const has = isKnown(id);
-    if (known && !has) state.knownIds = [...state.knownIds, id];
-    if (!known && has) state.knownIds = state.knownIds.filter((x) => x !== id);
-    saveState();
-    updateKnownStats();
   }
 
   function toggleFocus(id) {
@@ -676,30 +666,12 @@
     if (w) speak(w.jp);
   });
 
-  els.btnFocus.addEventListener("click", () => {
+  els.btnFocus.addEventListener("click", (e) => {
+    e.stopPropagation();
     const w = currentCard();
     if (!w) return;
+    // Keep autoplay running while toggling focus
     toggleFocus(w.id);
-  });
-
-  els.btnKnown.addEventListener("click", () => {
-    if (autoplay) stopAutoplay();
-    const w = currentCard();
-    if (!w) return;
-    markKnown(w.id, true);
-    updateKnownStats();
-    renderList();
-    goNext();
-  });
-
-  els.btnAgain.addEventListener("click", () => {
-    if (autoplay) stopAutoplay();
-    const w = currentCard();
-    if (!w) return;
-    markKnown(w.id, false);
-    updateKnownStats();
-    renderList();
-    goNext();
   });
 
   els.btnNext.addEventListener("click", goNext);
@@ -716,14 +688,6 @@
 
   if (els.btnShowAll) {
     els.btnShowAll.addEventListener("click", () => setFilter("all"));
-  }
-
-  const flipHint = document.getElementById("btn-flip-hint");
-  if (flipHint) {
-    flipHint.disabled = false;
-    flipHint.style.opacity = "";
-    flipHint.style.cursor = "";
-    flipHint.addEventListener("click", flipCard);
   }
 
   document.addEventListener("keydown", (e) => {
