@@ -75,6 +75,7 @@
       <div class="filter-bar" role="group" aria-label="Memo 卡篩選">
         <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">全部</button>
         <button type="button" class="filter-chip" data-filter="focus" aria-pressed="false">★ 只睇重點關注</button>
+        <button type="button" class="filter-chip" data-filter="unfocus" aria-pressed="false">☆ 未關注</button>
         <label class="sort-label flash-sort">
           排序
           <select id="flash-sort" aria-label="Memo 卡排序">
@@ -94,9 +95,9 @@
       </div>
 
       <div id="flash-empty" class="flash-empty" hidden>
-        <div class="flash-empty-icon" aria-hidden="true">★</div>
-        <p class="flash-empty-title">未有重點關注嘅生字</p>
-        <p class="flash-empty-desc">喺「全部」模式撳「重點關注」標記生字，之後就可以喺呢度溫習。</p>
+        <div id="flash-empty-icon" class="flash-empty-icon" aria-hidden="true">★</div>
+        <p id="flash-empty-title" class="flash-empty-title">未有重點關注嘅生字</p>
+        <p id="flash-empty-desc" class="flash-empty-desc">喺「全部」模式撳「重點關注」標記生字，之後就可以喺呢度溫習。</p>
         <button type="button" id="btn-show-all" class="btn btn-ghost">睇返全部</button>
       </div>
 

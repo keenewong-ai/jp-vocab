@@ -18,6 +18,9 @@
     flashCard: document.getElementById("flash-card"),
     flashMain: document.getElementById("flash-main"),
     flashEmpty: document.getElementById("flash-empty"),
+    flashEmptyIcon: document.getElementById("flash-empty-icon"),
+    flashEmptyTitle: document.getElementById("flash-empty-title"),
+    flashEmptyDesc: document.getElementById("flash-empty-desc"),
     cardJp: document.getElementById("card-jp"),
     cardZh: document.getElementById("card-zh"),
     cardSpeak: document.getElementById("card-speak"),
@@ -45,7 +48,7 @@
   let flipped = false;
   let selectedId = null;
   let jpVoice = null;
-  let deckFilter = "all"; // "all" | "focus"
+  let deckFilter = "all"; // "all" | "focus" | "unfocus"
   let listSortMode = "id"; // "id" | "added_desc" | "added_asc"
   let flashSortMode = "id";
   let state = loadState();
@@ -240,7 +243,7 @@
         state.focusIds = merged;
         saveState();
         updateFocusBtn();
-        if (deckFilter === "focus") {
+        if (deckFilter === "focus" || deckFilter === "unfocus") {
           const preferId = currentCard()?.id ?? null;
           rebuildDeckFromFilter({ preferId });
         }
@@ -287,10 +290,12 @@
     saveState();
     updateFocusBtn();
     schedulePushFocus();
-    // If filtering to focus only and we just unfocused the last card, rebuild
-    if (deckFilter === "focus") {
+    // Rebuild when focus/unfocus filter membership may change
+    if (deckFilter === "focus" || deckFilter === "unfocus") {
       const currentId = id;
-      rebuildDeckFromFilter({ preferId: isFocused(currentId) ? currentId : null });
+      const stillIn =
+        deckFilter === "focus" ? isFocused(currentId) : !isFocused(currentId);
+      rebuildDeckFromFilter({ preferId: stillIn ? currentId : null });
     }
   }
 
@@ -521,11 +526,27 @@
     els.detail.classList.add("visible");
   }
 
+  function filterLabelFull() {
+    if (deckFilter === "focus") return "重點關注";
+    if (deckFilter === "unfocus") return "未關注";
+    return "全部";
+  }
+
+  function filterLabelShort() {
+    if (deckFilter === "focus") return " · 重點";
+    if (deckFilter === "unfocus") return " · 未關注";
+    return "";
+  }
+
   function getFilteredPool() {
-    const pool =
-      deckFilter === "focus"
-        ? vocab.filter((w) => isFocused(w.id))
-        : [...vocab];
+    let pool;
+    if (deckFilter === "focus") {
+      pool = vocab.filter((w) => isFocused(w.id));
+    } else if (deckFilter === "unfocus") {
+      pool = vocab.filter((w) => !isFocused(w.id));
+    } else {
+      pool = [...vocab];
+    }
     return sortWords(pool, flashSortMode);
   }
 
@@ -586,10 +607,30 @@
   function showEmptyState(empty) {
     if (els.flashEmpty) els.flashEmpty.hidden = !empty;
     if (els.flashMain) els.flashMain.hidden = empty;
+    if (!empty) return;
+    if (deckFilter === "unfocus") {
+      if (els.flashEmptyIcon) els.flashEmptyIcon.textContent = "☆";
+      if (els.flashEmptyTitle) els.flashEmptyTitle.textContent = "未有「未關注」嘅生字";
+      if (els.flashEmptyDesc) {
+        els.flashEmptyDesc.textContent =
+          "全部生字都已標記重點關注。取消部分關注，或者睇返全部。";
+      }
+    } else if (deckFilter === "focus") {
+      if (els.flashEmptyIcon) els.flashEmptyIcon.textContent = "★";
+      if (els.flashEmptyTitle) els.flashEmptyTitle.textContent = "未有重點關注嘅生字";
+      if (els.flashEmptyDesc) {
+        els.flashEmptyDesc.textContent =
+          "喺「全部」或「未關注」模式撳「重點關注」標記生字，之後就可以喺呢度溫習。";
+      }
+    } else {
+      if (els.flashEmptyIcon) els.flashEmptyIcon.textContent = "空";
+      if (els.flashEmptyTitle) els.flashEmptyTitle.textContent = "未有生字";
+      if (els.flashEmptyDesc) els.flashEmptyDesc.textContent = "資料庫暫時冇生字。";
+    }
   }
 
   function updateFlashProgressEmpty() {
-    const label = deckFilter === "focus" ? "重點關注" : "全部";
+    const label = filterLabelFull();
     els.flashProgress.innerHTML = `<strong>0</strong> / 0 · ${label}`;
     els.progressFill.style.width = "0%";
   }
@@ -627,7 +668,7 @@
   }
 
   function setFilter(filter) {
-    if (filter !== "all" && filter !== "focus") return;
+    if (filter !== "all" && filter !== "focus" && filter !== "unfocus") return;
     if (autoplay) stopAutoplay();
     const currentId = currentCard()?.id ?? null;
     deckFilter = filter;
@@ -650,7 +691,7 @@
     els.cardJp.textContent = w.jp;
     els.cardZh.textContent = w.zh;
     els.flashCard.classList.toggle("flipped", flipped);
-    const filterLabel = deckFilter === "focus" ? " · 重點" : "";
+    const filterLabel = filterLabelShort();
     els.flashProgress.innerHTML = `<strong>${deckIndex + 1}</strong> / ${deck.length}${filterLabel}`;
     const pct = ((deckIndex + 1) / deck.length) * 100;
     els.progressFill.style.width = pct + "%";
@@ -713,7 +754,7 @@
       return;
     }
     els.autoplayStatus.hidden = false;
-    const filterLabel = deckFilter === "focus" ? "重點關注" : "全部";
+    const filterLabel = filterLabelFull();
     let voiceNote = "";
     let isFallback = false;
     if (!window.speechSynthesis) {
