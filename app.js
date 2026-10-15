@@ -35,6 +35,9 @@
     autoplayStatus: document.getElementById("autoplay-status"),
     autoplayStatusText: document.getElementById("autoplay-status-text"),
     syncStatus: document.getElementById("sync-status"),
+    listSort: document.getElementById("list-sort"),
+    flashSort: document.getElementById("flash-sort"),
+    detailAdded: document.getElementById("detail-added"),
   };
 
   let vocab = [];
@@ -45,6 +48,8 @@
   let selectedId = null;
   let jpVoice = null;
   let deckFilter = "all"; // "all" | "focus"
+  let listSortMode = "id"; // "id" | "added_desc" | "added_asc"
+  let flashSortMode = "id";
   let state = loadState();
   let zhVoice = null;
   let zhVoiceLabel = "";
@@ -450,9 +455,41 @@
     speakJa(text, { cancel: true });
   }
 
+
+  function addedTimestamp(w) {
+    const s = w && w.added_at != null ? String(w.added_at) : "";
+    // Accept YYYY-MM-DD or full ISO
+    const t = Date.parse(s.length === 10 ? s + "T00:00:00Z" : s);
+    return Number.isFinite(t) ? t : 0;
+  }
+
+  function formatAddedAt(w) {
+    const s = w && w.added_at != null ? String(w.added_at) : "";
+    if (!s) return "";
+    return s.slice(0, 10);
+  }
+
+  function sortWords(list, mode) {
+    const arr = Array.isArray(list) ? [...list] : [];
+    if (mode === "added_desc") {
+      arr.sort((a, b) => {
+        const d = addedTimestamp(b) - addedTimestamp(a);
+        return d !== 0 ? d : b.id - a.id;
+      });
+    } else if (mode === "added_asc") {
+      arr.sort((a, b) => {
+        const d = addedTimestamp(a) - addedTimestamp(b);
+        return d !== 0 ? d : a.id - b.id;
+      });
+    } else {
+      arr.sort((a, b) => a.id - b.id);
+    }
+    return arr;
+  }
+
   function renderList() {
     const q = (els.search.value || "").trim().toLowerCase();
-    filtered = !q
+    const matched = !q
       ? vocab
       : vocab.filter(
           (w) =>
@@ -460,6 +497,7 @@
             w.zh.toLowerCase().includes(q) ||
             String(w.id).includes(q)
         );
+    filtered = sortWords(matched, listSortMode);
 
     els.searchCount.textContent = `顯示 ${filtered.length} / ${vocab.length} 個生字`;
 
@@ -478,6 +516,7 @@
         <div class="word-main">
           <div class="jp">${escapeHtml(w.jp)}</div>
           <div class="zh">${escapeHtml(w.zh)}</div>
+          <div class="word-added">加入 ${escapeHtml(formatAddedAt(w) || "—")}</div>
         </div>
         ${isKnown(w.id) ? '<span class="badge-known">識</span>' : "<span></span>"}
         <button type="button" class="icon-btn speak-btn" title="讀出日文" aria-label="讀出 ${escapeHtml(w.jp)}">🔊</button>
@@ -500,6 +539,10 @@
     selectedId = word.id;
     els.detailJp.textContent = word.jp;
     els.detailZh.textContent = word.zh;
+    if (els.detailAdded) {
+      const d = formatAddedAt(word);
+      els.detailAdded.textContent = d ? "加入日期：" + d : "";
+    }
     els.detail.classList.add("visible");
     updateDetailKnownBtn();
   }
@@ -512,10 +555,11 @@
   }
 
   function getFilteredPool() {
-    if (deckFilter === "focus") {
-      return vocab.filter((w) => isFocused(w.id));
-    }
-    return [...vocab];
+    const pool =
+      deckFilter === "focus"
+        ? vocab.filter((w) => isFocused(w.id))
+        : [...vocab];
+    return sortWords(pool, flashSortMode);
   }
 
   function rebuildDeckFromFilter({ preferId = null, shuffle = false } = {}) {
@@ -595,6 +639,24 @@
     flipped = false;
     renderCard();
     saveState();
+  }
+
+  function setListSort(mode) {
+    if (mode !== "id" && mode !== "added_desc" && mode !== "added_asc") return;
+    listSortMode = mode;
+    if (els.listSort) els.listSort.value = mode;
+    renderList();
+  }
+
+  function setFlashSort(mode) {
+    if (mode !== "id" && mode !== "added_desc" && mode !== "added_asc") return;
+    if (autoplay) stopAutoplay();
+    const currentId = currentCard()?.id ?? null;
+    flashSortMode = mode;
+    if (els.flashSort) els.flashSort.value = mode;
+    // New sort: drop saved deck order so cards follow 加入日期 / id
+    state.deckOrder = null;
+    rebuildDeckFromFilter({ preferId: currentId });
   }
 
   function setFilter(filter) {
@@ -882,6 +944,13 @@
     chip.addEventListener("click", () => setFilter(chip.dataset.filter));
   });
 
+  if (els.listSort) {
+    els.listSort.addEventListener("change", () => setListSort(els.listSort.value));
+  }
+  if (els.flashSort) {
+    els.flashSort.addEventListener("change", () => setFlashSort(els.flashSort.value));
+  }
+
   if (els.btnShowAll) {
     els.btnShowAll.addEventListener("click", () => setFilter("all"));
   }
@@ -921,10 +990,18 @@
 
     const res = await fetch("vocab.json");
     if (!res.ok) throw new Error("無法載入 vocab.json");
-    vocab = await res.json();
-    if (!Array.isArray(vocab)) throw new Error("vocab.json 格式錯誤");
+    const rawVocab = await res.json();
+    if (!Array.isArray(rawVocab)) throw new Error("vocab.json 格式錯誤");
+    vocab = rawVocab.map((w) => ({
+      id: Number(w.id),
+      jp: String(w.jp || ""),
+      zh: String(w.zh || ""),
+      added_at: w.added_at ? String(w.added_at).slice(0, 10) : "2026-10-16",
+    }));
 
     els.totalCount.textContent = String(vocab.length);
+    if (els.listSort) els.listSort.value = listSortMode;
+    if (els.flashSort) els.flashSort.value = flashSortMode;
     updateKnownStats();
     renderList();
     rebuildDeckFromFilter();

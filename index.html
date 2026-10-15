@@ -38,6 +38,14 @@
       </div>
       <div class="search-meta">
         <span id="search-count">載入中…</span>
+        <label class="sort-label">
+          排序
+          <select id="list-sort" aria-label="生字表排序">
+            <option value="id">預設（編號）</option>
+            <option value="added_desc">加入日期（新→舊）</option>
+            <option value="added_asc">加入日期（舊→新）</option>
+          </select>
+        </label>
       </div>
       <ul id="word-list" class="word-list" aria-label="生字列表"></ul>
 
@@ -46,6 +54,7 @@
           <div>
             <div id="detail-jp" class="jp"></div>
             <div id="detail-zh" class="zh"></div>
+            <div id="detail-added" class="detail-added"></div>
           </div>
           <button type="button" id="detail-speak" class="icon-btn" title="讀出日文" aria-label="讀出日文">🔊</button>
         </div>
@@ -69,6 +78,14 @@
       <div class="filter-bar" role="group" aria-label="Memo 卡篩選">
         <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">全部</button>
         <button type="button" class="filter-chip" data-filter="focus" aria-pressed="false">★ 只睇重點關注</button>
+        <label class="sort-label flash-sort">
+          排序
+          <select id="flash-sort" aria-label="Memo 卡排序">
+            <option value="id">預設（編號）</option>
+            <option value="added_desc">加入日期（新→舊）</option>
+            <option value="added_asc">加入日期（舊→新）</option>
+          </select>
+        </label>
         <span id="sync-status" class="sync-status" role="status" aria-live="polite" title="重點關注雲端同步">同步中…</span>
       </div>
 
