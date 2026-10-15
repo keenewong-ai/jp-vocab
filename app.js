@@ -12,8 +12,6 @@
     detailJp: document.getElementById("detail-jp"),
     detailZh: document.getElementById("detail-zh"),
     detailSpeak: document.getElementById("detail-speak"),
-    detailKnown: document.getElementById("detail-known"),
-    knownCount: document.getElementById("known-count"),
     totalCount: document.getElementById("total-count"),
     flashProgress: document.getElementById("flash-progress"),
     progressFill: document.getElementById("progress-fill"),
@@ -76,16 +74,15 @@
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return { knownIds: [], focusIds: [], deckOrder: null, deckIndex: 0 };
+      if (!raw) return { focusIds: [], deckOrder: null, deckIndex: 0 };
       const parsed = JSON.parse(raw);
       return {
-        knownIds: Array.isArray(parsed.knownIds) ? parsed.knownIds : [],
         focusIds: Array.isArray(parsed.focusIds) ? parsed.focusIds : [],
         deckOrder: Array.isArray(parsed.deckOrder) ? parsed.deckOrder : null,
         deckIndex: typeof parsed.deckIndex === "number" ? parsed.deckIndex : 0,
       };
     } catch {
-      return { knownIds: [], focusIds: [], deckOrder: null, deckIndex: 0 };
+      return { focusIds: [], deckOrder: null, deckIndex: 0 };
     }
   }
 
@@ -93,7 +90,6 @@
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({
-        knownIds: state.knownIds,
         focusIds: state.focusIds,
         deckOrder: state.deckOrder,
         deckIndex: deckIndex,
@@ -277,24 +273,8 @@
     });
   }
 
-  function isKnown(id) {
-    return state.knownIds.includes(id);
-  }
-
   function isFocused(id) {
     return state.focusIds.includes(id);
-  }
-
-  function toggleKnown(id) {
-    if (isKnown(id)) {
-      state.knownIds = state.knownIds.filter((x) => x !== id);
-    } else {
-      state.knownIds = [...state.knownIds, id];
-    }
-    saveState();
-    updateKnownStats();
-    renderList();
-    updateDetailKnownBtn();
   }
 
   function toggleFocus(id) {
@@ -312,10 +292,6 @@
       const currentId = id;
       rebuildDeckFromFilter({ preferId: isFocused(currentId) ? currentId : null });
     }
-  }
-
-  function updateKnownStats() {
-    els.knownCount.textContent = String(state.knownIds.length);
   }
 
   function updateFocusBtn() {
@@ -509,7 +485,7 @@
     const frag = document.createDocumentFragment();
     for (const w of filtered) {
       const li = document.createElement("li");
-      li.className = "word-item" + (isKnown(w.id) ? " known" : "");
+      li.className = "word-item";
       li.dataset.id = String(w.id);
       li.innerHTML = `
         <span class="word-id">${w.id}</span>
@@ -518,7 +494,6 @@
           <div class="zh">${escapeHtml(w.zh)}</div>
           <div class="word-added">加入 ${escapeHtml(formatAddedAt(w) || "—")}</div>
         </div>
-        ${isKnown(w.id) ? '<span class="badge-known">識</span>' : "<span></span>"}
         <button type="button" class="icon-btn speak-btn" title="讀出日文" aria-label="讀出 ${escapeHtml(w.jp)}">🔊</button>
       `;
       frag.appendChild(li);
@@ -544,14 +519,6 @@
       els.detailAdded.textContent = d ? "加入日期：" + d : "";
     }
     els.detail.classList.add("visible");
-    updateDetailKnownBtn();
-  }
-
-  function updateDetailKnownBtn() {
-    if (selectedId == null) return;
-    const known = isKnown(selectedId);
-    els.detailKnown.textContent = known ? "取消「已識」" : "標記為已識";
-    els.detailKnown.className = "btn " + (known ? "btn-ghost" : "btn-success");
   }
 
   function getFilteredPool() {
@@ -909,10 +876,6 @@
     if (w) speak(w.jp);
   });
 
-  els.detailKnown.addEventListener("click", () => {
-    if (selectedId != null) toggleKnown(selectedId);
-  });
-
   els.flashCard.addEventListener("click", (e) => {
     if (e.target.closest(".card-speak")) return;
     flipCard();
@@ -1002,7 +965,6 @@
     els.totalCount.textContent = String(vocab.length);
     if (els.listSort) els.listSort.value = listSortMode;
     if (els.flashSort) els.flashSort.value = flashSortMode;
-    updateKnownStats();
     renderList();
     rebuildDeckFromFilter();
 
