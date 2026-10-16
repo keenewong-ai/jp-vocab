@@ -278,6 +278,30 @@ body {
   transition: background 0.12s;
 }
 
+.word-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.list-focus-btn {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.list-focus-btn:hover {
+  color: #f0c14b;
+  background: rgba(240, 193, 75, 0.12);
+}
+
+.list-focus-btn.active {
+  color: #f0c14b;
+  background: rgba(240, 193, 75, 0.16);
+  border-color: rgba(240, 193, 75, 0.45);
+}
+
 .word-item:last-child {
   border-bottom: none;
 }

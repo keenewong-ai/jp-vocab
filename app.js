@@ -270,6 +270,7 @@
         state.focusIds = merged;
         saveState();
         updateFocusBtn();
+        renderList();
         if (deckFilter === "focus" || deckFilter === "unfocus") {
           const preferId = currentCard()?.id ?? null;
           rebuildDeckFromFilter({ preferId });
@@ -317,6 +318,7 @@
     state.focusIds = normalizeFocusIds(state.focusIds);
     saveState();
     updateFocusBtn();
+    updateListFocusBtn(id);
     schedulePushFocus();
     // Rebuild when focus/unfocus filter membership may change
     if (deckFilter === "focus" || deckFilter === "unfocus") {
@@ -326,6 +328,22 @@
       rebuildDeckFromFilter({ preferId: stillIn ? currentId : null });
     }
     refreshDailyPanel({ preferCache: true });
+  }
+
+  function updateListFocusBtn(id) {
+    if (!els.wordList) return;
+    const item = els.wordList.querySelector(`.word-item[data-id="${id}"]`);
+    if (!item) return;
+    const btn = item.querySelector(".list-focus-btn");
+    if (!btn) return;
+    const focused = isFocused(id);
+    btn.textContent = focused ? "★" : "☆";
+    btn.classList.toggle("active", focused);
+    btn.setAttribute("aria-pressed", focused ? "true" : "false");
+    const word = vocab.find((w) => w.id === id);
+    const label = (focused ? "取消重點關注" : "加入重點關注") + (word ? " " + word.jp : "");
+    btn.title = focused ? "取消重點關注" : "加入重點關注";
+    btn.setAttribute("aria-label", label);
   }
 
   function updateFocusBtn() {
@@ -522,6 +540,7 @@
       const li = document.createElement("li");
       li.className = "word-item";
       li.dataset.id = String(w.id);
+      const focused = isFocused(w.id);
       li.innerHTML = `
         <span class="word-id">${w.id}</span>
         <div class="word-main">
@@ -529,7 +548,10 @@
           <div class="zh">${escapeHtml(w.zh)}</div>
           <div class="word-added">加入 ${escapeHtml(formatAddedAt(w) || "—")}</div>
         </div>
-        <button type="button" class="icon-btn speak-btn" title="讀出日文" aria-label="讀出 ${escapeHtml(w.jp)}">🔊</button>
+        <div class="word-actions">
+          <button type="button" class="icon-btn list-focus-btn${focused ? " active" : ""}" title="${focused ? "取消重點關注" : "加入重點關注"}" aria-label="${focused ? "取消重點關注" : "加入重點關注"} ${escapeHtml(w.jp)}" aria-pressed="${focused ? "true" : "false"}">${focused ? "★" : "☆"}</button>
+          <button type="button" class="icon-btn speak-btn" title="讀出日文" aria-label="讀出 ${escapeHtml(w.jp)}">🔊</button>
+        </div>
       `;
       frag.appendChild(li);
     }
@@ -1252,11 +1274,19 @@
 
   els.wordList.addEventListener("click", (e) => {
     const speakBtn = e.target.closest(".speak-btn");
+    const focusBtn = e.target.closest(".list-focus-btn");
     const item = e.target.closest(".word-item");
     if (!item) return;
     const id = Number(item.dataset.id);
     const word = vocab.find((w) => w.id === id);
     if (!word) return;
+
+    if (focusBtn) {
+      e.stopPropagation();
+      e.preventDefault();
+      toggleFocus(word.id);
+      return;
+    }
 
     if (speakBtn) {
       e.stopPropagation();
