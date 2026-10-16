@@ -41,6 +41,16 @@
     listSort: document.getElementById("list-sort"),
     flashSort: document.getElementById("flash-sort"),
     detailAdded: document.getElementById("detail-added"),
+    dailyProgress: document.getElementById("daily-progress"),
+    dailyHint: document.getElementById("daily-hint"),
+    dailyEmpty: document.getElementById("daily-empty"),
+    dailyMain: document.getElementById("daily-main"),
+    sentenceList: document.getElementById("sentence-list"),
+    btnDailyAutoplay: document.getElementById("btn-daily-autoplay"),
+    btnDailyRegen: document.getElementById("btn-daily-regen"),
+    btnDailyGotoFlash: document.getElementById("btn-daily-goto-flash"),
+    dailyAutoplayStatus: document.getElementById("daily-autoplay-status"),
+    dailyAutoplayStatusText: document.getElementById("daily-autoplay-status-text"),
   };
 
   let vocab = [];
@@ -65,6 +75,18 @@
   const AUTOPLAY_ZH_DELAY_MS = 3000;
   const AUTOPLAY_NEXT_PAUSE_MS = 1500;
   const AUTOPLAY_FLIP_BACK_MS = 400;
+
+  // Daily sentences
+  const DAILY_STORAGE_KEY = "jp-vocab-daily-sentences-v1";
+  const DAILY_MIN_FOCUS = (window.JpVocabSentenceGen && window.JpVocabSentenceGen.MIN_FOCUS) || 5;
+  const DAILY_COUNT = 20;
+  const DAILY_ZH_DELAY_MS = 3000;
+  const DAILY_NEXT_PAUSE_MS = 1600;
+  let dailySentences = [];
+  let dailyIndex = 0;
+  let dailyAutoplay = false;
+  let dailyAutoplayTimers = [];
+  let dailyAutoplayToken = 0;
 
   // Supabase cloud sync for 重點關注 (anon key is intentional for frontend)
   const SUPABASE_URL = "https://avfpoaipqkqxzuaqjutv.supabase.co";
@@ -252,6 +274,7 @@
           const preferId = currentCard()?.id ?? null;
           rebuildDeckFromFilter({ preferId });
         }
+        refreshDailyPanel({ preferCache: true });
       }
 
       if (changedRemote) {
@@ -302,6 +325,7 @@
         deckFilter === "focus" ? isFocused(currentId) : !isFocused(currentId);
       rebuildDeckFromFilter({ preferId: stillIn ? currentId : null });
     }
+    refreshDailyPanel({ preferCache: true });
   }
 
   function updateFocusBtn() {
@@ -404,8 +428,8 @@
       document.querySelectorAll(".icon-btn.speaking").forEach((b) => b.classList.remove("speaking"));
       const active = document.activeElement;
       if (active && active.classList.contains("icon-btn")) active.classList.add("speaking");
-      els.cardSpeak.classList.add("speaking");
-      els.detailSpeak.classList.add("speaking");
+      if (els.cardSpeak) els.cardSpeak.classList.add("speaking");
+      if (els.detailSpeak) els.detailSpeak.classList.add("speaking");
     };
     u.onend = u.onerror = () => {
       document.querySelectorAll(".icon-btn.speaking").forEach((b) => b.classList.remove("speaking"));
@@ -903,18 +927,324 @@
     saveState();
   }
 
+
+  // ——— 每日例句 ———
+
+  function getFocusWords() {
+    const ids = new Set(normalizeFocusIds(state.focusIds));
+    return vocab.filter((w) => ids.has(w.id));
+  }
+
+  function loadDailyCache() {
+    try {
+      const raw = localStorage.getItem(DAILY_STORAGE_KEY);
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch {
+      return null;
+    }
+  }
+
+  function saveDailyCache(payload) {
+    try {
+      localStorage.setItem(DAILY_STORAGE_KEY, JSON.stringify(payload));
+    } catch (err) {
+      console.warn("[jp-vocab] daily cache save failed", err);
+    }
+  }
+
+  function currentFocusHash() {
+    const gen = window.JpVocabSentenceGen;
+    if (gen && gen.focusHash) return gen.focusHash(state.focusIds);
+    return normalizeFocusIds(state.focusIds).join(",");
+  }
+
+  function todayDateKey() {
+    const gen = window.JpVocabSentenceGen;
+    if (gen && gen.todayKey) return gen.todayKey();
+    const d = new Date();
+    return (
+      d.getFullYear() +
+      "-" +
+      String(d.getMonth() + 1).padStart(2, "0") +
+      "-" +
+      String(d.getDate()).padStart(2, "0")
+    );
+  }
+
+  function generateDailySentences() {
+    const gen = window.JpVocabSentenceGen;
+    const focusWords = getFocusWords();
+    if (!gen || typeof gen.generate !== "function") {
+      console.warn("[jp-vocab] sentence generator missing");
+      return [];
+    }
+    return gen.generate(focusWords, { count: DAILY_COUNT });
+  }
+
+  function ensureDailySentences({ force = false, preferCache = true } = {}) {
+    const focusWords = getFocusWords();
+    if (focusWords.length < DAILY_MIN_FOCUS) {
+      dailySentences = [];
+      dailyIndex = 0;
+      return { ok: false, reason: "few-focus", focusCount: focusWords.length };
+    }
+
+    const date = todayDateKey();
+    const hash = currentFocusHash();
+    if (!force && preferCache) {
+      const cache = loadDailyCache();
+      if (
+        cache &&
+        cache.date === date &&
+        cache.focusHash === hash &&
+        Array.isArray(cache.sentences) &&
+        cache.sentences.length
+      ) {
+        dailySentences = cache.sentences;
+        dailyIndex = Math.min(dailyIndex, dailySentences.length - 1);
+        return { ok: true, fromCache: true, focusCount: focusWords.length };
+      }
+    }
+
+    dailySentences = generateDailySentences();
+    dailyIndex = 0;
+    saveDailyCache({
+      date,
+      focusHash: hash,
+      sentences: dailySentences,
+      generatedAt: new Date().toISOString(),
+    });
+    return { ok: true, fromCache: false, focusCount: focusWords.length };
+  }
+
+  function showDailyEmpty(empty, focusCount) {
+    if (els.dailyEmpty) els.dailyEmpty.hidden = !empty;
+    if (els.dailyMain) els.dailyMain.hidden = empty;
+    if (els.dailyHint) els.dailyHint.hidden = empty;
+    if (empty && els.dailyEmpty) {
+      const desc = els.dailyEmpty.querySelector(".flash-empty-desc");
+      if (desc) {
+        desc.textContent =
+          "請先喺 Memo 卡標記至少 " +
+          DAILY_MIN_FOCUS +
+          " 個「重點關注」生字（而家有 " +
+          (focusCount || 0) +
+          " 個），之後就可以喺呢度產生每日例句。";
+      }
+    }
+  }
+
+  function updateDailyProgress() {
+    if (!els.dailyProgress) return;
+    const n = dailySentences.length;
+    if (!n) {
+      els.dailyProgress.innerHTML = `<strong>0</strong> / ${DAILY_COUNT} 句`;
+      return;
+    }
+    const cur = dailyAutoplay ? dailyIndex + 1 : n;
+    els.dailyProgress.innerHTML = dailyAutoplay
+      ? `<strong>${dailyIndex + 1}</strong> / ${n} 句 · 播放中`
+      : `<strong>${n}</strong> / ${DAILY_COUNT} 句`;
+  }
+
+  function renderDailySentences() {
+    if (!els.sentenceList) return;
+    const focusCount = getFocusWords().length;
+    if (!dailySentences.length) {
+      showDailyEmpty(true, focusCount);
+      updateDailyProgress();
+      els.sentenceList.innerHTML = "";
+      return;
+    }
+    showDailyEmpty(false, focusCount);
+    updateDailyProgress();
+
+    const frag = document.createDocumentFragment();
+    dailySentences.forEach((s, i) => {
+      const li = document.createElement("li");
+      li.className = "sentence-item" + (dailyAutoplay && i === dailyIndex ? " playing" : "");
+      li.dataset.index = String(i);
+      const tags = (s.focusLabels || [])
+        .slice(0, 3)
+        .map((t) => `<span class="sentence-tag">${escapeHtml(t)}</span>`)
+        .join("");
+      const romaji = (s.romaji || "").trim();
+      li.innerHTML = `
+        <span class="sentence-num">${i + 1}</span>
+        <div class="sentence-body">
+          <div class="sentence-jp">${escapeHtml(s.jp)}</div>
+          ${romaji ? `<div class="sentence-romaji">${escapeHtml(romaji)}</div>` : ""}
+          <div class="sentence-zh">${escapeHtml(s.zh)}</div>
+          ${tags ? `<div class="sentence-tags">${tags}</div>` : ""}
+        </div>
+        <button type="button" class="icon-btn sentence-speak" title="讀出日文" aria-label="讀出日文">🔊</button>
+      `;
+      frag.appendChild(li);
+    });
+    els.sentenceList.innerHTML = "";
+    els.sentenceList.appendChild(frag);
+  }
+
+  function refreshDailyPanel({ force = false, preferCache = true } = {}) {
+    if (dailyAutoplay && force) stopDailyAutoplay();
+    const result = ensureDailySentences({ force, preferCache });
+    if (!result.ok) {
+      if (dailyAutoplay) stopDailyAutoplay();
+      dailySentences = [];
+    }
+    renderDailySentences();
+  }
+
+  function clearDailyAutoplayTimers() {
+    for (const t of dailyAutoplayTimers) clearTimeout(t);
+    dailyAutoplayTimers = [];
+  }
+
+  function scheduleDailyAutoplay(fn, ms) {
+    const id = setTimeout(fn, ms);
+    dailyAutoplayTimers.push(id);
+    return id;
+  }
+
+  function updateDailyAutoplayUi() {
+    if (els.btnDailyAutoplay) {
+      els.btnDailyAutoplay.classList.toggle("active", dailyAutoplay);
+      els.btnDailyAutoplay.setAttribute("aria-pressed", dailyAutoplay ? "true" : "false");
+      els.btnDailyAutoplay.textContent = dailyAutoplay ? "⏹ 停止播放" : "▶ 自動播放";
+    }
+    document.body.classList.toggle("daily-autoplaying", dailyAutoplay);
+    if (!els.dailyAutoplayStatus) return;
+    if (!dailyAutoplay) {
+      els.dailyAutoplayStatus.hidden = true;
+      return;
+    }
+    els.dailyAutoplayStatus.hidden = false;
+    let voiceNote = "";
+    if (zhHasCantonese && zhVoice) {
+      voiceNote = ` · 粵語 ${zhVoice.lang || zhVoice.name || "zh-HK"}`;
+    } else {
+      voiceNote = " · 中文用 zh-HK（粵語）";
+    }
+    if (els.dailyAutoplayStatusText) {
+      els.dailyAutoplayStatusText.textContent = `自動播放中（第 ${dailyIndex + 1}/${dailySentences.length} 句）${voiceNote}`;
+    }
+  }
+
+  function highlightDailyPlaying() {
+    if (!els.sentenceList) return;
+    els.sentenceList.querySelectorAll(".sentence-item").forEach((el) => {
+      const i = Number(el.dataset.index);
+      el.classList.toggle("playing", dailyAutoplay && i === dailyIndex);
+    });
+    updateDailyProgress();
+    updateDailyAutoplayUi();
+    const playing = els.sentenceList.querySelector(".sentence-item.playing");
+    if (playing && dailyAutoplay) {
+      playing.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }
+
+  function stopDailyAutoplay() {
+    dailyAutoplay = false;
+    dailyAutoplayToken += 1;
+    clearDailyAutoplayTimers();
+    if (window.speechSynthesis) speechSynthesis.cancel();
+    updateDailyAutoplayUi();
+    highlightDailyPlaying();
+  }
+
+  function runDailyAutoplayStep(token) {
+    if (!dailyAutoplay || token !== dailyAutoplayToken) return;
+    if (!dailySentences.length) {
+      stopDailyAutoplay();
+      return;
+    }
+    if (dailyIndex >= dailySentences.length) {
+      // finished all 20 — stop (can replay via button)
+      stopDailyAutoplay();
+      return;
+    }
+
+    const s = dailySentences[dailyIndex];
+    highlightDailyPlaying();
+    speakJa(s.jp, { cancel: true });
+
+    scheduleDailyAutoplay(() => {
+      if (!dailyAutoplay || token !== dailyAutoplayToken) return;
+      speakZh(s.zh, { cancel: false });
+      scheduleDailyAutoplay(() => {
+        if (!dailyAutoplay || token !== dailyAutoplayToken) return;
+        dailyIndex += 1;
+        if (dailyIndex >= dailySentences.length) {
+          stopDailyAutoplay();
+          // leave highlight off; keep list at end
+          renderDailySentences();
+          return;
+        }
+        runDailyAutoplayStep(token);
+      }, DAILY_NEXT_PAUSE_MS + 1000);
+    }, DAILY_ZH_DELAY_MS);
+  }
+
+  function startDailyAutoplay({ fromStart = false } = {}) {
+    if (!dailySentences.length) return;
+    if (autoplay) stopAutoplay();
+    if (!window.speechSynthesis) {
+      if (els.ttsNote) {
+        els.ttsNote.classList.add("visible");
+        els.ttsNote.textContent =
+          "呢個瀏覽器唔支援語音朗讀（Web Speech API）。請用 Chrome / Edge / Safari 試吓。";
+      }
+    } else {
+      speechSynthesis.getVoices();
+      refreshVoices();
+    }
+    if (fromStart || dailyIndex >= dailySentences.length) dailyIndex = 0;
+    dailyAutoplay = true;
+    dailyAutoplayToken += 1;
+    const token = dailyAutoplayToken;
+    clearDailyAutoplayTimers();
+    updateDailyAutoplayUi();
+    runDailyAutoplayStep(token);
+  }
+
+  function toggleDailyAutoplay() {
+    if (dailyAutoplay) stopDailyAutoplay();
+    else startDailyAutoplay({ fromStart: true });
+  }
+
+  function speakDailySentence(index) {
+    const s = dailySentences[index];
+    if (!s) return;
+    if (dailyAutoplay) stopDailyAutoplay();
+    dailyIndex = index;
+    highlightDailyPlaying();
+    speakJa(s.jp, { cancel: true });
+  }
+
+  function switchToFlashTab() {
+    const flashTab = document.querySelector('.tab[data-panel="panel-flash"]');
+    if (flashTab) flashTab.click();
+  }
+
   // Events
   els.tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-      if (tab.dataset.panel !== "panel-flash" && autoplay) stopAutoplay();
+      const panel = tab.dataset.panel;
+      if (panel !== "panel-flash" && autoplay) stopAutoplay();
+      if (panel !== "panel-daily" && dailyAutoplay) stopDailyAutoplay();
       els.tabs.forEach((t) => t.classList.remove("active"));
       els.panels.forEach((p) => p.classList.remove("active"));
       tab.classList.add("active");
-      document.getElementById(tab.dataset.panel).classList.add("active");
+      document.getElementById(panel).classList.add("active");
       tab.setAttribute("aria-selected", "true");
       els.tabs.forEach((t) => {
         if (t !== tab) t.setAttribute("aria-selected", "false");
       });
+      if (panel === "panel-daily") {
+        refreshDailyPanel({ preferCache: true });
+      }
     });
   });
 
@@ -1062,7 +1392,35 @@
     els.btnShowAll.addEventListener("click", () => setFilter("all"));
   }
 
+  if (els.btnDailyAutoplay) {
+    els.btnDailyAutoplay.addEventListener("click", toggleDailyAutoplay);
+  }
+  if (els.btnDailyRegen) {
+    els.btnDailyRegen.addEventListener("click", () => {
+      if (dailyAutoplay) stopDailyAutoplay();
+      refreshDailyPanel({ force: true, preferCache: false });
+    });
+  }
+  if (els.btnDailyGotoFlash) {
+    els.btnDailyGotoFlash.addEventListener("click", switchToFlashTab);
+  }
+  if (els.sentenceList) {
+    els.sentenceList.addEventListener("click", (e) => {
+      const item = e.target.closest(".sentence-item");
+      if (!item) return;
+      const idx = Number(item.dataset.index);
+      if (!Number.isFinite(idx)) return;
+      speakDailySentence(idx);
+    });
+  }
+
   document.addEventListener("keydown", (e) => {
+    const dailyActive = document.getElementById("panel-daily")?.classList.contains("active");
+    if (dailyActive && e.key === "Escape" && dailyAutoplay) {
+      e.preventDefault();
+      stopDailyAutoplay();
+      return;
+    }
     const flashActive = document.getElementById("panel-flash").classList.contains("active");
     if (!flashActive) return;
     if (!deck.length) return;
@@ -1119,6 +1477,7 @@
     setSyncStatus("syncing", "同步中…");
     await pullAndMergeFocus();
     startFocusSyncPolling();
+    refreshDailyPanel({ preferCache: true });
 
     console.log(`[jp-vocab] loaded ${vocab.length} words`);
   }

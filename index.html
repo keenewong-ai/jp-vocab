@@ -20,7 +20,7 @@
         <div class="brand-mark" aria-hidden="true">日</div>
         <div>
           <h1>Keene 日語生字</h1>
-          <p>生字表 · Memo 卡 · 日文朗讀</p>
+          <p>生字表 · Memo 卡 · 每日例句</p>
         </div>
       </div>
       <div class="stats-pill" title="生字總數">
@@ -31,6 +31,7 @@
     <nav class="tabs" role="tablist">
       <button type="button" class="tab active" data-panel="panel-list" role="tab" aria-selected="true">生字表</button>
       <button type="button" class="tab" data-panel="panel-flash" role="tab" aria-selected="false">Memo 卡</button>
+      <button type="button" class="tab" data-panel="panel-daily" role="tab" aria-selected="false">每日例句</button>
     </nav>
 
     <!-- List panel -->
@@ -143,7 +144,34 @@
       <p id="tts-note" class="tts-note" role="status"></p>
     </section>
 
+
+    <!-- Daily sentences panel -->
+    <section id="panel-daily" class="panel" role="tabpanel">
+      <div class="daily-toolbar">
+        <div class="progress-text" id="daily-progress"><strong>0</strong> / 20 句</div>
+        <div class="daily-actions">
+          <button type="button" id="btn-daily-autoplay" class="btn btn-autoplay" aria-pressed="false">▶ 自動播放</button>
+          <button type="button" id="btn-daily-regen" class="btn btn-ghost">🔄 重新產生</button>
+        </div>
+      </div>
+      <p class="daily-hint" id="daily-hint">用你嘅「重點關注」生字，組成 20 句日常生活日文。撳句子讀日文；自動播放會先讀日文，約三秒後用粵語讀中文。</p>
+      <div id="daily-autoplay-status" class="autoplay-status" hidden role="status" aria-live="polite">
+        <span class="autoplay-dot" aria-hidden="true"></span>
+        <span id="daily-autoplay-status-text">自動播放中…</span>
+      </div>
+      <div id="daily-empty" class="flash-empty" hidden>
+        <div class="flash-empty-icon" aria-hidden="true">★</div>
+        <p class="flash-empty-title">未有足夠重點關注</p>
+        <p class="flash-empty-desc">請先喺 Memo 卡標記至少 5 個「重點關注」生字，之後就可以喺呢度產生每日例句。</p>
+        <button type="button" id="btn-daily-goto-flash" class="btn btn-ghost">去 Memo 卡</button>
+      </div>
+      <div id="daily-main">
+        <ul id="sentence-list" class="sentence-list" aria-label="每日例句"></ul>
+      </div>
+    </section>
+
   </div>
+  <script src="sentence-gen.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
